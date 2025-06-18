@@ -1,23 +1,24 @@
 "use client";
 
 import { useCallback } from "react";
-import { Product } from "@/app/(carts)/cart/action";
-import { addItem, delOneItem } from "@/app/(carts)/cart/action";
+import { Product } from "@/types/product";
+import { useCart } from "@/contexts/CartContext";
 
 interface ProductCartInfoProps {
   product: Product;
 }
 
-export function ProductCartInfo({ product }: ProductCartInfoProps) {
+export default function ProductCartInfo({ product }: ProductCartInfoProps) {
   const { price, quantity } = product;
+  const { addToCart, decrementQuantity } = useCart();
 
   const handleAddItem = useCallback(() => {
-    addItem(product);
+    addToCart(product);
   }, [product]);
 
-  const handleDelItem = useCallback(() => {
-    delOneItem(product);
-  }, [product]);
+  const handleDelOneItem = useCallback(() => {
+    decrementQuantity(product._id);
+  }, [product._id]);
 
   const IncrementButton = () => (
     <button
@@ -31,7 +32,7 @@ export function ProductCartInfo({ product }: ProductCartInfoProps) {
   const DecrementButton = () => (
     <button
       className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-l text-[#A1A1A1] transition-all hover:text-white border-border-primary"
-      onClick={handleDelItem}
+      onClick={handleDelOneItem}
     >
       -
     </button>

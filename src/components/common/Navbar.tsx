@@ -2,15 +2,19 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { LinksDesktop } from "./LinksDesktop";
 import SearchInput from "./SearchInput";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { useCart } from "@/contexts/CartContext";
 
 interface Navbar {
-  totalItemsCart: number;
+  // totalItemsCart: number;
 }
 
-export const Navbar = ({ totalItemsCart }: Navbar) => {
+export const Navbar = () => {
+  const pathname = usePathname();
+  const { totalItems } = useCart();
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
 
   const toggleHeader = () => {
@@ -148,7 +152,7 @@ export const Navbar = ({ totalItemsCart }: Navbar) => {
               ></path>
             </svg>
             <span className="flex items-center bg-[#0072F5] font-medium text-[#EDEDED] justify-center absolute w-[20px] rounded-full top-[-3px] right-[-3px]">
-              {totalItemsCart}
+              {totalItems}
             </span>
           </Link>
         </li>

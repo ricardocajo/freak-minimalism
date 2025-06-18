@@ -2,27 +2,26 @@
 
 import React from "react";
 import { useCallback } from "react";
-import { Product } from "@/app/(carts)/cart/action";
-import { delItem } from "@/app/(carts)/cart/action";
+import { Product } from "@/types/product";
+import { useCart } from "@/contexts/CartContext";
 
-function DeleteButton({ product }: { product: Product }) {
-  const { productId, size, variantId } = product;
+interface DeleteButtonProps {
+  product: Product;
+}
 
+const DeleteButton: React.FC<DeleteButtonProps> = ({ product }) => {
+  const { removeProduct } = useCart();
+  
   const handleDelete = useCallback(() => {
-    delItem(product);
-  }, [product]);
+    removeProduct(product);
+  }, [product, removeProduct]);
 
   return (
     <button
       onClick={handleDelete}
-      aria-label="Delete item"
-      className="transition-all hover:text-white"
+      className="text-sm text-[#EDEDED] hover:text-[#1F1F1F]"
     >
       <svg
-        width="18"
-        height="18"
-        viewBox="0 0 15 15"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="text-[#A1A1A1]"
       >
