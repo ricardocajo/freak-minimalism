@@ -66,9 +66,11 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
               </div>
             </div>
             <div className="border-t border-solid border-border-primary">
-              <button type="submit" className="w-full p-2 transition duration-150 text-13 ease hover:bg-color-secondary">
-                Add To Cart
-              </button>
+              <AddToCart
+                product={product}
+                selectedColor={selectedColor}
+                selectedSize={selectedSize}
+              />
             </div>
           </div>
           <div className="w-full" data-orientation="vertical">
