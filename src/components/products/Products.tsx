@@ -40,13 +40,10 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
           <Link href={`/products/${product.id}`} className="hover:scale-105 transition-all">
             <div className="relative">
               <Images
-                src={product.images[0].replace('/images/', '')}
+                src={product.images[0]}
                 alt={product.name}
                 className="w-full max-w-img aspect-[2/3] brightness-90"
               />
-              <div className="absolute top-0 right-0 w-full aspect-[2/3] bg-black">
-                <div className="animate-pulse rounded-md bg-[#111] w-full aspect-[2/3] rounded-b-none"></div>
-              </div>
             </div>
           </Link>
           <div className="flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
