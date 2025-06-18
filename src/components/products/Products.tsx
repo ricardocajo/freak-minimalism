@@ -40,7 +40,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
           <Link href={`/products/${product.id}`} className="hover:scale-105 transition-all">
             <div className="relative">
               <Images
-                src={`/data/images/${product.images[0]}`}
+                src={product.images[0].replace('/images/', '')}
                 alt={product.name}
                 className="w-full max-w-img aspect-[2/3] brightness-90"
               />

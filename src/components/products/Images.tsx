@@ -19,6 +19,7 @@ export const Images = ({ src, alt, className }: ImagesProps) => {
     img.src = src;
     img.onload = () => {
       setImageDimensions({ width: img.width, height: img.height });
+      setImageLoaded(true);
     };
   }, [src]);
 
@@ -29,7 +30,7 @@ export const Images = ({ src, alt, className }: ImagesProps) => {
         alt={alt}
         width={imageDimensions.width || 800}
         height={imageDimensions.height || 1200}
-        onLoad={() => setImageLoaded(true)}
+        unoptimized={true}
         className="object-cover"
       />
       {!imageLoaded && <Skeleton className="w-full h-full" />}
