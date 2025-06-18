@@ -22,12 +22,12 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
     return (
       <div className="flex flex-wrap justify-between gap-8">
         <div className="grow-999 basis-0">
-          <div className="flex lg:hidden">
-            <div className="relative w-full min-w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
+          <div className="flex lg:hidden justify-center items-center min-h-[400px]">
+            <div className="relative w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
               <div className="overflow-hidden">
-                <div className="flex -ml-4">
+                <div className="flex">
                   <div
-                    className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                    className="min-w-0 shrink-0 grow-0 basis-full"
                     role="group"
                     aria-roledescription="slide"
                   >
@@ -35,9 +35,9 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
                       <Images
                         src={product.images[0]}
                         alt={product.name}
-                        className="w-full max-w-img aspect-[2/3] brightness-90"
-                        width={384}
-                        height={576}
+                        className="w-full h-full object-cover"
+                        width={250}
+                        height={375}
                       />
                     </div>
                   </div>
@@ -51,14 +51,14 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
   }
 
   return (
-    <div className="flex flex-wrap justify-between gap-8">
+    <div className="flex flex-wrap justify-between">
       <div className="grow-999 basis-0">
-        <div className="flex lg:hidden">
-          <div className="relative w-full min-w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
+        <div className="flex lg:hidden justify-center items-center min-h-[400px]">
+          <div className="relative w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
             <div className="overflow-hidden">
-              <div className="flex -ml-4">
+              <div className="flex">
                 <div
-                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                  className="min-w-0 shrink-0 grow-0 basis-full"
                   role="group"
                   aria-roledescription="slide"
                 >
@@ -66,9 +66,9 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
                     <Images
                       src={product.images[0]}
                       alt={product.name}
-                      className="w-full max-w-img aspect-[2/3] brightness-90"
-                      width={384}
-                      height={576}
+                      className="w-full h-full object-cover"
+                      width={250}
+                      height={375}
                     />
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
               <Images
                 src={image}
                 alt={product.name}
-                className="w-full max-w-img aspect-[2/3] brightness-90"
+                className="w-full h-full object-cover"
                 width={850}
                 height={1275}
               />
