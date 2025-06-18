@@ -10,7 +10,7 @@ import { toast } from "sonner";
 interface AddToCartProps {
   product: Product;
   selectedColor: string;
-  selectedSize: string;
+  selectedSize: string | null;
 }
 
 export const AddToCart = ({
@@ -22,6 +22,11 @@ export const AddToCart = ({
   const [isPending, startTransition] = useTransition();
 
   const handleAddToCart = useCallback(() => {
+    if (!selectedSize) {
+      toast.error("You have to select a size to save the product");
+      return;
+    }
+
     const cartItem: CartItem = {
       id: product.id,
       name: product.name,
@@ -42,7 +47,6 @@ export const AddToCart = ({
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <span className="text-sm text-gray-500">Color: {selectedColor}</span>
-        <span className="text-sm text-gray-500">Size: {selectedSize}</span>
       </div>
       <button
         onClick={handleAddToCart}

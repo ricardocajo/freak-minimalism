@@ -18,7 +18,7 @@ interface SingleProductProps {
 
 export const SingleProduct = ({ product }: SingleProductProps) => {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   return (
     <div className="flex flex-col gap-10">
@@ -39,8 +39,10 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`flex items-center justify-center border border-solid border-border-primary px-1 py-1.5 bg-black rounded transition duration-150 ease hover:border-border-secondary text-13 ${
-                      selectedSize === size ? 'border-border-secondary' : ''
+                    className={`flex items-center justify-center border border-solid border-border-primary px-1 py-1.5 bg-black rounded transition duration-150 ease text-13 ${
+                      selectedSize === size 
+                        ? 'bg-white text-black hover:bg-white'
+                        : 'hover:border-border-secondary'
                     }`}
                   >
                     <span>{size}</span>
