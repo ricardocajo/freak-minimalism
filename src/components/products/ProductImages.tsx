@@ -20,25 +20,75 @@ interface ProductImagesProps {
 export const ProductImages = ({ product }: ProductImagesProps) => {
   if (!product.images || product.images.length === 0) {
     return (
-      <Skeleton className="w-full rounded-b-none aspect-[2/3] min-w-[250px] lg:aspect-[4/6] lg:min-w-[560px]" />
+      <div className="flex flex-wrap justify-between gap-8">
+        <div className="grow-999 basis-0">
+          <div className="flex lg:hidden">
+            <div className="relative w-full min-w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
+              <div className="overflow-hidden">
+                <div className="flex -ml-4">
+                  <div
+                    className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                    role="group"
+                    aria-roledescription="slide"
+                  >
+                    <div className="relative">
+                      <Images
+                        src={product.images[0]}
+                        alt={product.name}
+                        className="w-full max-w-img aspect-[2/3] brightness-90"
+                        width={384}
+                        height={576}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="relative aspect-square">
-        <Images
-          src={product.images[0]}
-          alt={product.name}
-        />
+    <div className="flex flex-wrap justify-between gap-8">
+      <div className="grow-999 basis-0">
+        <div className="flex lg:hidden">
+          <div className="relative w-full min-w-[250px] rounded-md overflow-hidden" role="region" aria-roledescription="carousel">
+            <div className="overflow-hidden">
+              <div className="flex -ml-4">
+                <div
+                  className="min-w-0 shrink-0 grow-0 basis-full pl-0"
+                  role="group"
+                  aria-roledescription="slide"
+                >
+                  <div className="relative">
+                    <Images
+                      src={product.images[0]}
+                      alt={product.name}
+                      className="w-full max-w-img aspect-[2/3] brightness-90"
+                      width={384}
+                      height={576}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        {product.images.slice(1).map((image, index) => (
-          <div key={index} className="relative aspect-square">
-            <Images
-              src={image}
-              alt={product.name}
-            />
+      <div className="lg:grid hidden grid-cols-2 gap-0.5 min-w-grid-img">
+        {product.images.map((image, index) => (
+          <div key={index} className="inline-block w-full max-w-2xl mx-auto overflow-hidden rounded">
+            <div className="relative">
+              <Images
+                src={image}
+                alt={product.name}
+                className="w-full max-w-img aspect-[2/3] brightness-90"
+                width={850}
+                height={1275}
+              />
+            </div>
           </div>
         ))}
       </div>

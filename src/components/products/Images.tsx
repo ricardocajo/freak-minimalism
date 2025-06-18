@@ -10,30 +10,25 @@ interface ImagesProps {
   className?: string;
 }
 
-export const Images = ({ src, alt, className }: ImagesProps) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+interface ImagesProps {
+  src: string;
+  alt: string;
+  className?: string;
+  width?: number;
+  height?: number;
+}
 
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = src;
-    img.onload = () => {
-      setImageDimensions({ width: img.width, height: img.height });
-      setImageLoaded(true);
-    };
-  }, [src]);
-
+export const Images = ({ src, alt, className, width = 800, height = 1200 }: ImagesProps) => {
   return (
-    <div className={`relative w-full h-full ${className || ''}`}>
+    <div className={`relative ${className || ''}`}>
       <Image
         src={src}
         alt={alt}
-        width={imageDimensions.width || 800}
-        height={imageDimensions.height || 1200}
+        width={width}
+        height={height}
         unoptimized={true}
         className="object-cover"
       />
-      {!imageLoaded && <Skeleton className="w-full h-full" />}
     </div>
   );
 }
