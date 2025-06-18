@@ -5,30 +5,15 @@ export const products = [
     name: "Minimal Logo T-Shirt",
     price: 35.00,
     description: "Classic minimalist t-shirt with subtle logo print",
-    category: "tshirts",
+    category: "t-shirts",
     images: [
-      "/images/tshirts/minimal-logo-tshirt-black.jpg",
-      "/images/tshirts/minimal-logo-tshirt-white.jpg"
+      "/images/tshirts/tshirt1.png",
+      "/images/tshirts/tshirt2.png"
     ],
     colors: ["Black", "White"],
     sizes: ["S", "M", "L", "XL"],
     featured: true,
     new: true
-  },
-  {
-    _id: "tshirt2",
-    name: "Clean Cut T-Shirt",
-    price: 32.00,
-    description: "Sleek, modern fit t-shirt with clean lines",
-    category: "tshirts",
-    images: [
-      "/images/tshirts/clean-cut-tshirt-black.jpg",
-      "/images/tshirts/clean-cut-tshirt-navy.jpg"
-    ],
-    colors: ["Black", "Navy"],
-    sizes: ["S", "M", "L", "XL"],
-    featured: false,
-    new: false
   },
 
   // Pants
@@ -39,28 +24,13 @@ export const products = [
     description: "Modern slim fit chinos in premium cotton",
     category: "pants",
     images: [
-      "/images/pants/slim-fit-chinos-navy.jpg",
-      "/images/pants/slim-fit-chinos-beige.jpg"
+      "/images/pants/pants1.png",
+      "/images/pants/pants2.png"
     ],
     colors: ["Navy", "Beige"],
     sizes: ["28", "30", "32", "34"],
     featured: true,
     new: true
-  },
-  {
-    _id: "pants2",
-    name: "Straight Leg Trousers",
-    price: 58.00,
-    description: "Classic straight leg trousers with modern twist",
-    category: "pants",
-    images: [
-      "/images/pants/straight-leg-trousers-black.jpg",
-      "/images/pants/straight-leg-trousers-charcoal.jpg"
-    ],
-    colors: ["Black", "Charcoal"],
-    sizes: ["28", "30", "32", "34"],
-    featured: false,
-    new: false
   },
 
   // Sweatshirts
@@ -71,27 +41,12 @@ export const products = [
     description: "Premium cotton sweatshirt with minimalist logo",
     category: "sweatshirts",
     images: [
-      "/images/sweatshirts/minimal-logo-sweatshirt-black.jpg",
-      "/images/sweatshirts/minimal-logo-sweatshirt-gray.jpg"
+      "/images/sweatshirts/sweatshirt1.png",
+      "/images/sweatshirts/sweatshirt2.png"
     ],
     colors: ["Black", "Gray"],
     sizes: ["S", "M", "L", "XL"],
     featured: true,
     new: true
   },
-  {
-    _id: "sweatshirt2",
-    name: "Clean Cut Sweatshirt",
-    price: 45.00,
-    description: "Modern fit sweatshirt with clean design",
-    category: "sweatshirts",
-    images: [
-      "/images/sweatshirts/clean-cut-sweatshirt-navy.jpg",
-      "/images/sweatshirts/clean-cut-sweatshirt-charcoal.jpg"
-    ],
-    colors: ["Navy", "Charcoal"],
-    sizes: ["S", "M", "L", "XL"],
-    featured: false,
-    new: false
-  }
 ];

@@ -5,11 +5,11 @@ export interface Product {
   images: string[];
   colors: string[];
   sizes: string[];
+  category: string;
   featured: boolean;
   new: boolean;
-  quantity: number;
-  selectedColor?: string;
-  selectedSize?: string;
+  description: string;
+  _id?: string;
 }
 
 export type ProductDocument = Product;
