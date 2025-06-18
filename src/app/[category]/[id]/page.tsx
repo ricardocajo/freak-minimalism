@@ -6,62 +6,63 @@ import { Suspense } from "react";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 import SingleProductSkeleton from "@/components/skeletons/SingleProductSkeleton";
 
-type Props = {
+interface ProductPageProps {
   params: {
     id: string;
   };
-};
-
-const capitalizeFirstLetter = (string: string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
-export async function generateMetadata({ params }: Props) {
-  const product: ProductDocument = await getProduct(params.id);
-  return {
-    title: `${product?.name} | Ecommerce Template`,
-    description: `Product page for ${product?.name}`,
-  };
 }
 
-const ProductPage = async ({ params }: Props) => (
-  <section className="pt-14">
-    <Suspense
-      fallback={
-        <div>
-          <SingleProductSkeleton />
-          <h2 className="mt-24 mb-5 text-xl font-bold sm:text-2xl">
-            YOU MIGHT ALSO LIKE...
-          </h2>
-          <ProductSkeleton
-            extraClassname={"colums-mobile"}
-            numberProducts={6}
-          />
-        </div>
-      }
-    >
-      <AllProducts id={params.id} />
-    </Suspense>
-  </section>
-);
+const ProductPage = ({ params }: ProductPageProps) => {
+  const product = getProduct(params.id);
+  const randomProducts = getRandomProducts(params.id);
 
-const AllProducts = async ({ id }: { id: string }) => {
-  const session: Session | null = await getServerSession(authOptions);
-  const product: ProductDocument = await getProduct(id);
-  const randomProducts = await getRandomProducts(id);
-  const productJSON = JSON.stringify(product);
+  if (!product) {
+    return <div>Product not found</div>;
+  }
 
   return (
-    <>
-      <SingleProduct product={productJSON} session={session} />
+    <section className="pt-14">
+      <Suspense
+        fallback={
+          <div>
+            <SingleProductSkeleton />
+            <h2 className="mt-24 mb-5 text-xl font-bold sm:text-2xl">
+              YOU MIGHT ALSO LIKE...
+            </h2>
+            <ProductSkeleton
+              extraClassname={"colums-mobile"}
+              numberProducts={6}
+            />
+          </div>
+        }
+      >
+        <AllProducts id={params.id} />
+      </Suspense>
+    </section>
+  );
+};
 
+interface AllProductsProps {
+  id: string;
+}
+
+const AllProducts = ({ id }: AllProductsProps) => {
+  const product = getProduct(id);
+  const randomProducts = getRandomProducts(id);
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  return (
+    <div>
+      <SingleProduct product={product} />
       <h2 className="mt-24 mb-5 text-xl font-bold sm:text-2xl">
         YOU MIGHT ALSO LIKE...
       </h2>
-
-      <Products products={randomProducts} extraClassname={"colums-mobile"} />
-    </>
+      <Products products={randomProducts} />
+    </div>
   );
-};
+}
 
 export default ProductPage;

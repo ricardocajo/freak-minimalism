@@ -10,4 +10,6 @@ export interface Product {
   quantity: number;
   selectedColor?: string;
   selectedSize?: string;
-};
+}
+
+export type ProductDocument = Product;

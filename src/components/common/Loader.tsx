@@ -2,13 +2,15 @@
 
 import React from "react";
 
+interface LoaderProps {
+  height?: number;
+  width?: number;
+}
+
 export const Loader = ({
-  height,
-  width,
-}: {
-  height: number;
-  width: number;
-}) => {
+  height = 20,
+  width = 20,
+}: LoaderProps) => {
   return (
     <div className="flex items-center justify-center w-full h-full">
       <svg

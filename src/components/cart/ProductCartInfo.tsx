@@ -1,33 +1,23 @@
 "use client";
 
 import { useCallback } from "react";
-import { Product } from "@/types/product";
+import { CartItem } from "@/contexts/CartContext";
 import { useCart } from "@/contexts/CartContext";
 
 interface ProductCartInfoProps {
-  product: Product;
+  cartItem: CartItem;
 }
 
-export default function ProductCartInfo({ product }: ProductCartInfoProps) {
-  const { price, quantity } = product;
+export const ProductCartInfo = ({ cartItem }: ProductCartInfoProps) => {
   const { addToCart, decrementQuantity } = useCart();
 
-  const handleAddItem = useCallback(() => {
-    addToCart(product);
-  }, [product]);
-
   const handleDelOneItem = useCallback(() => {
-    decrementQuantity(product._id);
-  }, [product._id]);
+    decrementQuantity(cartItem.id);
+  }, [cartItem.id]);
 
-  const IncrementButton = () => (
-    <button
-      className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-r text-[#A1A1A1] transition-all hover:text-white border-border-primary"
-      onClick={handleAddItem}
-    >
-      +
-    </button>
-  );
+  const handleAddItem = useCallback(() => {
+    addToCart(cartItem);
+  }, [cartItem]);
 
   const DecrementButton = () => (
     <button
@@ -38,13 +28,32 @@ export default function ProductCartInfo({ product }: ProductCartInfoProps) {
     </button>
   );
 
+  const IncrementButton = () => (
+    <button
+      className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-r text-[#A1A1A1] transition-all hover:text-white border-border-primary"
+      onClick={handleAddItem}
+    >
+      +
+    </button>
+  );
+
   return (
-    <div className="flex items-center justify-between">
-      <span className="text-sm">{price}€</span>
-      <div className="flex bg-black w-min">
-        <DecrementButton />
-        <span className="flex items-center justify-center w-8 h-8">{quantity}</span>
-        <IncrementButton />
+    <div className="flex flex-col gap-3">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <p className="text-sm font-medium">{cartItem.name}</p>
+          <p className="text-sm text-gray-500">{cartItem.color}</p>
+          <p className="text-sm text-gray-500">{cartItem.size}</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <DecrementButton />
+          <p className="text-sm font-medium">{cartItem.quantity}</p>
+          <IncrementButton />
+        </div>
+      </div>
+      <div className="flex justify-between items-center">
+        <p className="text-sm text-gray-500">{cartItem.price}€</p>
+        <p className="text-sm font-medium">{(cartItem.price * cartItem.quantity).toFixed(2)}€</p>
       </div>
     </div>
   );

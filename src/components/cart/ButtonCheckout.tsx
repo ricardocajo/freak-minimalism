@@ -4,38 +4,36 @@ import axios from "axios";
 import { useTransition, useCallback, useMemo } from "react";
 import { Loader } from "../common/Loader";
 import { toast } from "sonner";
-import { Product } from "@/app/(carts)/cart/action";
+import { CartItem } from "@/contexts/CartContext";
 
 interface ButtonCheckoutProps {
-  products: Product[];
+  cartItems: CartItem[];
 }
 
-const ButtonCheckout = ({ products }: ButtonCheckoutProps) => {
-  let [isPending, startTransition] = useTransition();
+export const ButtonCheckout = ({ cartItems }: ButtonCheckoutProps) => {
+  const [isPending, startTransition] = useTransition();
 
   const lineItems = useMemo(
     () =>
-      products.map((product) => ({
+      cartItems.map((item) => ({
         price_data: {
           currency: "eur",
           product_data: {
-            name: product.name,
-            images: product.image,
+            name: item.name,
+            images: [item.image],
           },
-          unit_amount: product.price * 100,
+          unit_amount: Math.round(item.price * 100),
         },
-        quantity: product.quantity,
+        quantity: item.quantity,
       })),
-    [products]
+    [cartItems]
   );
 
   const handleCheckout = useCallback(async () => {
     try {
-      const { data } = await axios.post("/api/stripe/create-checkout-session", {
-        lineItems,
-      });
-
-      window.location.href = data.url;
+      const response = await axios.post("/api/checkout", { lineItems });
+      const { url } = response.data;
+      window.location.href = url;
     } catch (error) {
       console.error("Error creating checkout session:", error);
       toast.error("Failed to create checkout session");
@@ -45,8 +43,8 @@ const ButtonCheckout = ({ products }: ButtonCheckoutProps) => {
   return (
     <button
       onClick={() => startTransition(handleCheckout)}
-      className="w-full rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
       disabled={isPending}
+      className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
     >
       {isPending ? <Loader height={20} width={20} /> : "Checkout"}
     </button>

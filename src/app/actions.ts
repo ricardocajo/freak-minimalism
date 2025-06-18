@@ -1,51 +1,41 @@
-"use server";
+import { Product } from "@/types/types";
 
-export type Product = {
-  name: string;
-  category: string;
-  _id: string;
-  price: number;
-  image: string[];
-  sizes: string[];
-  variants: Array<{
-    priceId: string;
-    color: string;
-    images: string[];
-  }>;
-};
-
-const products: Product[] = [
-  // Add hardcoded product data here
+export const products: Product[] = [
+  {
+    id: "1",
+    name: "Product 1",
+    price: 99.99,
+    images: ["/images/product1.jpg"],
+    colors: ["Black", "White"],
+    sizes: ["S", "M", "L"]
+  },
+  {
+    id: "2",
+    name: "Product 2",
+    price: 149.99,
+    images: ["/images/product2.jpg"],
+    colors: ["Red", "Blue"],
+    sizes: ["XS", "S", "M", "L", "XL"]
+  },
+  {
+    id: "3",
+    name: "Product 3",
+    price: 79.99,
+    images: ["/images/product3.jpg"],
+    colors: ["Gray", "Navy"],
+    sizes: ["S", "M", "L", "XL"]
+  }
 ];
 
-export const getAllProducts = async () => {
+export const getAllProducts = () => {
   return products;
 };
 
-export const getCategoryProducts = async (category: string) => {
-  return products.filter(product => product.category === category);
+export const getRandomProducts = (productId: string) => {
+  const filteredProducts = products.filter((product) => product.id !== productId);
+  return filteredProducts.slice(0, 6);
 };
 
-export const getRandomProducts = async (productId: string) => {
-  const shuffleArray = (array: Product[]) => {
-    let shuffled = array.slice();
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
-
-  const allProducts = products;
-  const shuffledProducts = shuffleArray(allProducts);
-  const randomProducts = shuffledProducts
-    .filter((product) => product._id !== productId)
-    .slice(0, 6);
-  return randomProducts;
+export const getProduct = (id: string) => {
+  return products.find((product) => product.id === id);
 };
-
-export const getProduct = async (id: string) => {
-  return products.find(product => product._id === id);
-};
-
-

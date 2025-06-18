@@ -4,48 +4,19 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Skeleton } from "../ui/skeleton";
 
-export const Images = ({
-  image,
-  name,
-  width,
-  height,
-  priority,
-  sizes,
-}: {
-  image: string[];
-  name: string;
-  width: number;
-  height: number;
-  priority: boolean;
-  sizes: string;
-}) => {
+export const Images = ({ src, alt }: { src: string; alt: string }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleImageLoadComplete = () => {
-    setImageLoaded(true);
-  };
-
   return (
-    <div className={!imageLoaded ? "relative" : ""}>
+    <div className="relative w-full h-full">
       <Image
-        width={width}
-        height={height}
-        src={image[0]}
-        alt={name}
-        priority={priority}
-        className="w-full max-w-img aspect-[2/3] brightness-90"
-        onLoad={handleImageLoadComplete}
-        sizes={sizes}
+        src={src}
+        alt={alt}
+        fill
+        onLoad={() => setImageLoaded(true)}
+        className="object-cover"
       />
-      <div
-        className={
-          !imageLoaded
-            ? "absolute top-0 right-0 w-full aspect-[2/3] bg-black"
-            : "hidden"
-        }
-      >
-        <Skeleton className="w-full aspect-[2/3] rounded-b-none" />
-      </div>
+      {!imageLoaded && <Skeleton className="w-full h-full" />}
     </div>
   );
-};
+}
