@@ -83,7 +83,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.composition || "Composition details will be added soon"}
+                  {product.composition}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="care" className="border-b border-[#2E2E2E]">
@@ -92,7 +92,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.care || "Care instructions will be added soon"}
+                  {product.care}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="origin" className="border-b border-[#2E2E2E]">
@@ -101,7 +101,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.origin || "Origin information will be added soon"}
+                  {product.origin}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

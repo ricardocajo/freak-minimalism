@@ -9,6 +9,9 @@ export interface Product {
   featured: boolean;
   new: boolean;
   description: string;
+  composition: string;
+  care: string;
+  origin: string;
   _id?: string;
 }
 

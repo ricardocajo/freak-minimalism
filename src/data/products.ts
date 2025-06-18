@@ -12,6 +12,9 @@ export const products = [
     ],
     colors: ["Black", "White"],
     sizes: ["S", "M", "L", "XL"],
+    composition: "100% cotton",
+    care: "Machine wash cold. Do not bleach. Tumble dry low.",
+    origin: "Made in Portugal :)",
     featured: true,
     new: true
   },
@@ -29,6 +32,9 @@ export const products = [
     ],
     colors: ["Navy", "Beige"],
     sizes: ["28", "30", "32", "34"],
+    composition: "65% cotton, 35% polyester",
+    care: "Machine wash cold. Do not bleach. Iron low heat.",
+    origin: "Made in Portugal",
     featured: true,
     new: true
   },
@@ -46,6 +52,9 @@ export const products = [
     ],
     colors: ["Black", "Gray"],
     sizes: ["S", "M", "L", "XL"],
+    composition: "80% cotton, 20% polyester",
+    care: "Machine wash cold. Do not bleach. Tumble dry low.",
+    origin: "Made in Portugal",
     featured: true,
     new: true
   },
