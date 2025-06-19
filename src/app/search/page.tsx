@@ -23,7 +23,7 @@ const Search: React.FC<SearchProps> = async ({ searchParams }) => {
   }
 
   return (
-    <section className="pt-14">
+    <section className="">
       {filteredProducts.length > 0 ? (
         <Products products={filteredProducts} extraClassname="" />
       ) : (
