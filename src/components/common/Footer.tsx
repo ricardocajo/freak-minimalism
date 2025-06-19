@@ -107,51 +107,23 @@ export const Footer = () => {
             </Link>
           </div>
         </div>
-        <div className="w-full max-w-xs">
-          <h2 className="my-3 text-sm font-medium">Products</h2>
-          <ul className="grid grid-cols-2">
-            <li className={liStyles}>
-              <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/t-shirts`}
-                className={linkStyles}
-              >
-                T-shirts
-              </Link>
-            </li>
-            <li className={liStyles}>
-              <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/pants`}
-                className={linkStyles}
-              >
-                Pants
-              </Link>
-            </li>
-            <li className={liStyles}>
-              <Link
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/sweatshirts`}
-                className={linkStyles}
-              >
-                Sweatshirts
-              </Link>
-            </li>
-          </ul>
-        </div>
+
         <div className="w-full max-w-xs">
           <h2 className="my-3 text-sm font-medium">Assistance</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
-              <Link href="#" className={linkStyles}>
+              <Link href="/customize" className={linkStyles}>
+                Customize
+              </Link>
+            </li>
+            <li className={liStyles}>
+              <Link href="/size-guide" className={linkStyles}>
                 Size guide
               </Link>
             </li>
             <li className={liStyles}>
-              <Link href="#" className={linkStyles}>
+              <Link href="/delivery" className={linkStyles}>
                 Delivery
-              </Link>
-            </li>
-            <li className={liStyles}>
-              <Link href="#" className={linkStyles}>
-                Returns and refunds
               </Link>
             </li>
           </ul>
