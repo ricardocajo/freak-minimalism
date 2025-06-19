@@ -51,12 +51,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           cartItem.id === item.id && 
           cartItem.color === item.color && 
           cartItem.size === item.size
-            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         )
       );
     } else {
-      setCart((prev) => [...prev, item]);
+      setCart((prev) => [...prev, { ...item, quantity: 1 }]);
     }
   };
 

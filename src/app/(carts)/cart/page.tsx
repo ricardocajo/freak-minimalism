@@ -22,103 +22,120 @@ export default function CartPage() {
   const { cart, removeFromCart, decrementQuantity, addToCart } = useCart();
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">Shopping Cart</h1>
-      <div className="mt-6">
-        {cart.length > 0 ? (
-          <div className="grid gap-6">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {cart.map((item: CartItem) => (
-                <div key={item.id} className="bg-white rounded-lg shadow-sm">
-                  <div className="p-4">
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-4">
-                        <div className="relative w-24 h-24">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="absolute inset-0 object-cover w-full h-full rounded"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <h2 className="text-sm font-medium">{item.name}</h2>
-                          <p className="text-sm text-gray-500">{item.color}</p>
-                          <p className="text-sm text-gray-500">{item.size}</p>
-                          <p className="text-sm font-medium">{item.price}€</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <button
-                          className="text-red-500 hover:text-red-700"
-                          onClick={() => removeFromCart(item)}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-5 h-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center mt-4">
-                      <div className="flex items-center gap-2">
-                        <button
-                          className="text-gray-500 hover:text-gray-700"
-                          onClick={() => decrementQuantity(item.id)}
-                        >
-                          -
-                        </button>
-                        <span className="text-sm">{item.quantity}</span>
-                        <button
-                          className="text-gray-500 hover:text-gray-700"
-                          onClick={() => addToCart(item)}
-                        >
-                          +
-                        </button>
-                      </div>
-                      <p className="text-sm font-medium">{(item.price * item.quantity).toFixed(2)}€</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="bg-white rounded-lg shadow-sm p-4">
-              <h2 className="text-lg font-medium mb-4">Order Summary</h2>
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-sm">Subtotal</p>
-                <p className="text-sm font-medium">{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</p>
-              </div>
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-sm">Shipping</p>
-                <p className="text-sm font-medium">Free</p>
-              </div>
-              <div className="flex justify-between items-center mb-4">
-                <p className="text-sm">Total</p>
-                <p className="text-sm font-medium">{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}€</p>
-              </div>
-              <ButtonCheckout cartItems={cart} />
-            </div>
-          </div>
-        ) : (
-          <div className="text-center">
-            <h2 className="text-xl font-medium mb-4">Your cart is empty</h2>
+    <div className="pt-12">
+      <h2 className="mb-5 text-xl font-bold sm:text-2xl">YOUR SHOPPING CART</h2>
+      <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 grid-cols-1 sm:grid-cols-auto-fill-250">
+        {cart.map((item: CartItem) => (
+          <div
+            key={item.id}
+            className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-row sm:flex-col"
+          >
             <Link
-              href="/products"
-              className="inline-block bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+              href={`/products/${item.id}`}
+              className="w-6/12 sm:w-full hover:scale-105 transition-all"
             >
-              Continue Shopping
+              <div className="relative">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full max-w-img aspect-[2/3] brightness-90"
+                  width={280}
+                  height={425}
+                  decoding="async"
+                  data-nimg="1"
+                />
+              </div>
             </Link>
+            <div className="w-6/12 sm:w-full flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
+              <div className="flex justify-between w-full">
+                <Link href={`/products/${item.id}`} className="w-10/12">
+                  <h2 className="text-sm font-semibold truncate">{item.name}</h2>
+                </Link>
+                <button
+                  aria-label="Delete item"
+                  onClick={() => removeFromCart(item)}
+                  className="transition-all hover:text-white"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="text-[#A1A1A1]"
+                  >
+                    <path
+                      d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="text-sm">{(item.price * item.quantity).toFixed(2)}€</div>
+              <div className="flex sm:hidden">
+                <div className="text-sm pr-2.5 border-r">{item.size}</div>
+                <div className="text-sm pl-2.5">{item.color}</div>
+              </div>
+              <div className="flex items-center justify-between sm:hidden">
+                <div className="flex bg-black w-min">
+                  <button
+                    onClick={() => decrementQuantity(item.id)}
+                    className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-l text-[#A1A1A1] transition-all hover:text-white border-border-primary"
+                  >
+                    -
+                  </button>
+                  <span className="flex items-center justify-center w-8 h-8 p-2 text-sm border-solid border-y border-border-primary">
+                    {item.quantity}
+                  </span>
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-r text-[#A1A1A1] transition-all hover:text-white border-border-primary"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="text-sm">{(item.price * item.quantity).toFixed(2)}€</div>
+              </div>
+              <div className="items-center justify-between hidden sm:flex">
+                <div className="flex bg-black w-min">
+                  <button
+                    onClick={() => decrementQuantity(item.id)}
+                    className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-l text-[#A1A1A1] transition-all hover:text-white border-border-primary"
+                  >
+                    -
+                  </button>
+                  <span className="flex items-center justify-center w-8 h-8 p-2 text-sm border-solid border-y border-border-primary">
+                    {item.quantity}
+                  </span>
+                  <button
+                    onClick={() => addToCart(item)}
+                    className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-r text-[#A1A1A1] transition-all hover:text-white border-border-primary"
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="flex">
+                  <div className="text-sm pr-2.5 border-r">{item.size}</div>
+                  <div className="text-sm pl-2.5">{item.color}</div>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        ))}
+        <div className="fixed left-[50%] translate-x-[-50%] bottom-4 w-[90%] z-10 sm:w-[360px] rounded-xl overflow-hidden flex bg-black border border-solid border-border-primary h-min">
+          <div className="flex flex-col p-2.5 justify-center w-1/2 gap-2 text-center">
+            <div className="flex gap-2.5 justify-center text-sm">
+              <span>Total:</span>
+              <span>{cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}€</span>
+            </div>
+            <span className="text-xs">+ TAX INCL.</span>
+          </div>
+          <div className="w-1/2 border-l border-solid bg-background-secondary border-border-primary">
+            <ButtonCheckout cartItems={cart} />
+          </div>
+        </div>
       </div>
     </div>
   );
