@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
 
 const CategoryPage = async ({ params }: Props) => {
   return (
-    <section className="pt-14">
+    <section className="">
       <Suspense
         fallback={<ProductSkeleton extraClassname="" numberProducts={6} />}
       >

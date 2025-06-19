@@ -24,10 +24,10 @@ export default function CartPage() {
 
   return (
     <div className="pt-12">
-      <h2 className="mb-5 text-xl font-bold sm:text-2xl">YOUR SHOPPING CART</h2>
-      <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 grid-cols-1 sm:grid-cols-auto-fill-250">
+      <h2 className="mb-5 text-xl font-bold sm:text-2xl text-center">YOUR SHOPPING CART</h2>
+      <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 grid-cols-1 sm:grid-cols-auto-fill-250 max-w-2xl mx-auto">
         {cart.length === 0 ? (
-          <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-91px)] gap-2 px-4">
+          <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-500px)] gap-4 max-w-2xl mx-auto px-4">
             <h1 className="mb-6 text-4xl font-bold">YOUR CART IS EMPTY</h1>
             <p className="mb-4 text-lg">When you have added something to your cart, it will appear here. Want to get started?</p>
             <Link
