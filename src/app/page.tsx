@@ -5,7 +5,7 @@ import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 
 const Home = async () => {
   return (
-    <section className="pt-14">
+    <section className="">
       <Suspense
         fallback={<ProductSkeleton extraClassname="" numberProducts={18} />}
       >

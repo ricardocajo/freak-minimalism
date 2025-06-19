@@ -37,7 +37,7 @@ const CategoryPage = async ({ params }: Props) => {
 const CategoryProducts = async ({ category }: { category: string }) => {
   const products = await getCategoryProducts(category);
 
-  return <Products products={products} extraClassname={`category-${category}`} />;
+  return <Products products={products} extraClassname={`category-${category.toLowerCase()}`} />;
 };
 
 export default CategoryPage;
