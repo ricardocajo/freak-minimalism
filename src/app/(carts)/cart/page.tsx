@@ -47,11 +47,11 @@ export default function CartPage() {
                 href={`/products/${item.id}`}
                 className="w-6/12 sm:w-full hover:scale-105 transition-all"
               >
-                <div className="relative">
+                <div className="relative w-full h-32 sm:h-48">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full max-w-img aspect-[2/3] brightness-90"
+                    className="w-full h-full object-cover brightness-90"
                     width={280}
                     height={425}
                     decoding="async"
