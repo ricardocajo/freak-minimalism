@@ -20,7 +20,7 @@ const ButtonCheckout = dynamic(
 );
 
 export default function CartPage() {
-  const { cart, removeFromCart, decrementQuantity, addToCart } = useCart();
+  const { cart, removeFromCart, decrementQuantity, addToCart, total } = useCart();
 
   return (
     <div className="pt-12">
@@ -86,7 +86,19 @@ export default function CartPage() {
                     </svg>
                   </button>
                 </div>
-                <div className="text-sm">{(item.price * item.quantity).toFixed(2)}€</div>
+                {item.discountPrice && (
+                  <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
+                    {Math.round(((item.price - item.discountPrice) / item.price) * 100)}% OFF
+                  </span>
+                )}
+                {item.discountPrice ? (
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm line-through text-[#A1A1A1]">{(item.price * item.quantity).toFixed(2)}€</span>
+                    <span className="text-sm font-semibold">{(item.discountPrice * item.quantity).toFixed(2)}€</span>
+                  </div>
+                ) : (
+                  <div className="text-sm">{(item.price * item.quantity).toFixed(2)}€</div>
+                )}
                 <div className="flex sm:hidden">
                   <div className="text-sm pr-2.5 border-r">{item.size}</div>
                   <div className="text-sm pl-2.5">{item.color}</div>
@@ -142,7 +154,7 @@ export default function CartPage() {
           <div className="flex flex-col p-2.5 justify-center w-1/2 gap-2 text-center">
             <div className="flex gap-2.5 justify-center text-sm">
               <span>Total:</span>
-              <span>{cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}€</span>
+              <span>{total.toFixed(2)}€</span>
             </div>
             <span className="text-xs">+ TAX INCL.</span>
           </div>

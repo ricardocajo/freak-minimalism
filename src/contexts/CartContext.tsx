@@ -7,6 +7,7 @@ export interface CartItem {
   id: string;
   name: string;
   price: number;
+  discountPrice?: number;
   color: string;
   size: string;
   image: string;
@@ -36,7 +37,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
+
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+
+  const total = cart.reduce((sum, item) => {
+    const price = item.discountPrice ? item.discountPrice : item.price;
+    return sum + (price * item.quantity);
+  }, 0);
 
   const addToCart = (item: CartItem) => {
     const existingItem = cart.find((cartItem) => 
@@ -56,7 +68,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         )
       );
     } else {
-      setCart((prev) => [...prev, { ...item, quantity: 1 }]);
+      setCart((prev) => [...prev, item]);
     }
   };
 
@@ -114,5 +126,11 @@ export function useCart() {
   if (context === undefined) {
     throw new Error("useCart must be used within a CartProvider");
   }
-  return context;
+  return {
+    ...context,
+    total: context.cart.reduce((sum, item) => {
+      const price = item.discountPrice ? item.discountPrice : item.price;
+      return sum + (price * item.quantity);
+    }, 0)
+  };
 }

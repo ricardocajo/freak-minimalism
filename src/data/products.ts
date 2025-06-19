@@ -16,7 +16,8 @@ export const products = [
     care: "Machine wash cold. Do not bleach. Tumble dry low.",
     origin: "Made in Portugal :)",
     featured: true,
-    new: true
+    new: true,
+    discountPrice: 30,
   },
 
   // Pants

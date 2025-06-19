@@ -30,7 +30,19 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
           <div className="w-full border border-solid rounded border-border-primary bg-background-secondary">
             <div className="flex flex-col justify-between gap-3 p-5 border-b border-solid border-border-primary">
               <h1 className="text-base font-semibold">{product.name}</h1>
-              <span className="text-sm">{product.price}€</span>
+              {product.discountPrice && (
+                <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
+                  {Math.round(((product.price - product.discountPrice) / product.price) * 100)}% OFF
+                </span>
+              )}
+              {product.discountPrice ? (
+                <div className="flex items-center gap-1">
+                  <span className="text-sm line-through text-[#A1A1A1]">{product.price}€</span>
+                  <span className="text-sm font-semibold">{product.discountPrice}€</span>
+                </div>
+              ) : (
+                <span className="text-sm">{product.price}€</span>
+              )}
               <p className="text-sm">{product.description}</p>
             </div>
             <div className="p-5">
