@@ -1,10 +1,10 @@
 import i18n from 'i18next';
-import HttpBackend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
+import enTranslations from '../public/locales/en/common.json';
+import ptTranslations from '../public/locales/pt/common.json';
 
 i18n
-  .use(HttpBackend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
@@ -15,13 +15,17 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    backend: {
-      loadPath: '/locales/{{lng}}/common.json',
+    resources: {
+      en: {
+        common: enTranslations,
+      },
+      pt: {
+        common: ptTranslations,
+      },
     },
     react: {
       useSuspense: false,
     },
-    initImmediate: false, // Prevent immediate initialization
   });
 
 export default i18n;
