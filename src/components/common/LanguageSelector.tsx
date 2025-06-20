@@ -26,8 +26,6 @@ export function LanguageSelector() {
     setOpen(false);
   };
 
-  const currentLanguage = languages.find((lang) => lang.code === currentLocale);
-
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger className="flex items-center px-3 py-1.5 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-800">
@@ -39,14 +37,14 @@ export function LanguageSelector() {
           />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40" align="end">
+      <DropdownMenuContent className="w-8" align="end">
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
             onClick={() => changeLanguage(language.code)}
-            className="flex items-center p-2"
+            className="p-0.5"
           >
-            <div className="w-6 h-6">
+            <div className="w-6 h-6 mx-auto">
               <img
                 src={`/images/flags/${language.code === 'pt' ? 'pt' : 'uk'}.svg`}
                 alt={`${language.code === 'pt' ? 'Portugal' : 'United Kingdom'} flag`}
