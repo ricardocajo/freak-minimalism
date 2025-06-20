@@ -1,8 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Images } from "./Images";
-import DeleteButton from "../cart/DeleteButton";
-import { Skeleton } from "../ui/skeleton";
 import { Product } from "@/types/types";
+import { useTranslation } from "react-i18next";
 
 interface ProductsProps {
   products: Product[];
@@ -10,6 +11,7 @@ interface ProductsProps {
 }
 
 export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
+  const { t } = useTranslation();
   const showCustomization = extraClassname.startsWith('category-') || extraClassname === '';
   const gridClassname = [
     "grid gap-x-3.5 gap-y-6 sm:gap-y-9",
@@ -39,12 +41,12 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
       {showCustomization && (
         <div className="flex items-center justify-center p-4 bg-black rounded-full">
           <div className="flex flex-col items-center text-center">
-            <span className="text-sm text-[#A1A1A1]">Don't find what you're looking for?</span>
+            <span className="text-sm text-[#A1A1A1]">{t('products.customizeMessage')}</span>
             <Link
               href="/customize"
               className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-gradient-to-r from-[#00B4DB] to-[#0083B0] text-white rounded-full hover:from-[#00A1CE] hover:to-[#007195] transition-all"
             >
-              Send us your idea
+              {t('products.customizeButton')}
               <svg
                 className="w-2.5 h-2.5"
                 fill="none"

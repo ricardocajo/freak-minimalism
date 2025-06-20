@@ -40,5 +40,9 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "medium": "Medium"
+  },
+  "products": {
+    "customizeButton": "Send us your idea",
+    "customizeMessage": "Don't find what you're looking for?"
   }
 }
