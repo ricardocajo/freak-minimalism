@@ -44,5 +44,18 @@
   "products": {
     "customizeButton": "Send us your idea",
     "customizeMessage": "Don't find what you're looking for?"
+  },
+  "cartPage": {
+    "title": "YOUR SHOPPING CART",
+    "empty": {
+      "title": "YOUR CART IS EMPTY",
+      "description": "When you have added something to your cart, it will appear here. Want to get started?",
+      "button": "Start"
+    },
+    "total": {
+      "label": "Total:",
+      "tax": "+ TAX INCL."
+    },
+    "checkout": "Continue"
   }
 }

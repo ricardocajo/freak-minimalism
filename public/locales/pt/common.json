@@ -44,5 +44,18 @@
   "products": {
     "customizeButton": "Envia-nos a tua ideia",
     "customizeMessage": "Não encontras o que estás à procura?"
+  },
+  "cartPage": {
+    "title": "SEU CARRINHO DE COMPRAS",
+    "empty": {
+      "title": "SEU CARRINHO ESTÁ VAZIO",
+      "description": "Quando você adicionar algo ao seu carrinho, ele aparecerá aqui. Quer começar?",
+      "button": "Começar"
+    },
+    "total": {
+      "label": "Total:",
+      "tax": "+ TAX INCL."
+    },
+    "checkout": "Continuar"
   }
 }

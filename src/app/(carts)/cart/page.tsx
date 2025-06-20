@@ -6,6 +6,7 @@ import { ProductCartInfo } from "@/components/cart/ProductCartInfo";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const ButtonCheckout = dynamic(
   () => import("@/components/cart/ButtonCheckout"),
@@ -21,20 +22,21 @@ const ButtonCheckout = dynamic(
 
 export default function CartPage() {
   const { cart, removeFromCart, decrementQuantity, addToCart, total } = useCart();
+  const { t } = useTranslation();
 
   return (
     <div className="pt-12">
-      <h2 className="mb-5 text-xl font-bold sm:text-2xl text-center">YOUR SHOPPING CART</h2>
+      <h2 className="mb-5 text-xl font-bold sm:text-2xl text-center">{t('cartPage.title')}</h2>
       <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 grid-cols-1 sm:grid-cols-auto-fill-250 max-w-2xl mx-auto">
         {cart.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full h-[calc(100vh-500px)] gap-4 max-w-2xl mx-auto px-4">
-            <h1 className="mb-6 text-4xl font-bold">YOUR CART IS EMPTY</h1>
-            <p className="mb-4 text-lg">When you have added something to your cart, it will appear here. Want to get started?</p>
+            <h1 className="mb-6 text-4xl font-bold">{t('cartPage.empty.title')}</h1>
+            <p className="mb-4 text-lg">{t('cartPage.empty.description')}</p>
             <Link
               href="/"
               className="flex font-medium items-center bg-[#0C0C0C] justify-center text-sm min-w-[160px] max-w-[160px] h-[40px] px-[10px] rounded-md border border-solid border-[#2E2E2E] transition-all hover:bg-[#1F1F1F] hover:border-[#454545]"
             >
-              Start
+              {t('cartPage.empty.button')}
             </Link>
           </div>
         ) : (
@@ -153,10 +155,10 @@ export default function CartPage() {
         <div className="fixed left-[50%] translate-x-[-50%] bottom-4 w-[90%] z-10 sm:w-[360px] rounded-xl overflow-hidden flex bg-black border border-solid border-border-primary h-min">
           <div className="flex flex-col p-2.5 justify-center w-1/2 gap-2 text-center">
             <div className="flex gap-2.5 justify-center text-sm">
-              <span>Total:</span>
+              <span>{t('cartPage.total.label')}</span>
               <span>{total.toFixed(2)}€</span>
             </div>
-            <span className="text-xs">+ TAX INCL.</span>
+            <span className="text-xs">{t('cartPage.total.tax')}</span>
           </div>
           <div className="w-1/2 border-l border-solid bg-background-secondary border-border-primary">
             <ButtonCheckout cartItems={cart} />
