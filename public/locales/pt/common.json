@@ -26,5 +26,19 @@
   "mission": {
     "title": "Nossa Missão",
     "content": "Criar uma coleção de roupas minimalistas que permita expressar seu estilo pessoal mantendo uma aparência limpa e sofisticada."
+  },
+  "search": {
+    "placeholder": "Pesquisar Produtos..."
+  },
+  "footer": {
+    "assistance": "Assistência",
+    "about": "Sobre",
+    "customize": "Personalizar",
+    "sizeGuide": "Guia de Tamanhos",
+    "delivery": "Entrega",
+    "portfolio": "Portfólio",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "medium": "Medium"
   }
 }

@@ -2,8 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const linkStyles = "text-sm transition duration-150 ease hover:text-white";
   const liStyles = "text-[#A1A1A1] my-1.5";
 
@@ -109,27 +111,27 @@ export const Footer = () => {
         </div>
 
         <div className="w-full max-w-xs">
-          <h2 className="my-3 text-sm font-medium">Assistance</h2>
+          <h2 className="my-3 text-sm font-medium">{t('footer.assistance')}</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
               <Link href="/customize" className={linkStyles}>
-                Customize
+                {t('footer.customize')}
               </Link>
             </li>
             <li className={liStyles}>
               <Link href="/size-guide" className={linkStyles}>
-                Size guide
+                {t('footer.sizeGuide')}
               </Link>
             </li>
             <li className={liStyles}>
               <Link href="/delivery" className={linkStyles}>
-                Delivery
+                {t('footer.delivery')}
               </Link>
             </li>
           </ul>
         </div>
         <div className="w-full max-w-xs">
-          <h2 className="my-3 text-sm font-medium">About Marcos</h2>
+          <h2 className="my-3 text-sm font-medium">{t('footer.about')}</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
               <Link
@@ -137,7 +139,7 @@ export const Footer = () => {
                 target="_blank"
                 className={linkStyles}
               >
-                Portfolio
+                {t('footer.portfolio')}
               </Link>
             </li>
             <li className={liStyles}>
@@ -146,7 +148,7 @@ export const Footer = () => {
                 target="_blank"
                 className={linkStyles}
               >
-                LinkedIn
+                {t('footer.linkedin')}
               </Link>
             </li>
             <li className={liStyles}>
