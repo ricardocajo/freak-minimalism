@@ -7,15 +7,24 @@ import { LinksDesktop } from "./LinksDesktop";
 import SearchInput from "./SearchInput";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { useCart } from "@/contexts/CartContext";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslation, useSSR } from 'react-i18next';
+import { useEffect } from 'react';
+import i18n from '@/i18n';
 
 interface Navbar {
   // totalItemsCart: number;
 }
 
 export const Navbar = () => {
+  const { t, ready } = useTranslation('common');
   const pathname = usePathname();
   const { totalItems } = useCart();
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
+
+  if (!ready) {
+    return null; // Wait for translations to be ready
+  }
 
   const toggleHeader = () => {
     document.body.style.overflow = "auto";
@@ -23,10 +32,10 @@ export const Navbar = () => {
   };
 
   const linksData = [
-    { path: "/about", name: "ABOUT" },
-    { path: "/t-shirts", name: "T-SHIRTS" },
-    { path: "/pants", name: "PANTS" },
-    { path: "/sweatshirts", name: "SWEATSHIRTS" },
+    { path: "/about", name: t('navbar.about') },
+    { path: "/t-shirts", name: t('navbar.tshirts') },
+    { path: "/pants", name: t('navbar.pants') },
+    { path: "/sweatshirts", name: t('navbar.sweatshirts') },
   ];
 
   const authLinks = () => {
@@ -87,6 +96,10 @@ export const Navbar = () => {
             </button>
           </li>
 
+          <li className="flex items-center">
+            <LanguageSwitcher />
+          </li>
+
           {authLinks()}
         </ul>
 
@@ -130,6 +143,9 @@ export const Navbar = () => {
       <SearchInput />
 
       <ul className="flex gap-2">
+        <li>
+          <LanguageSwitcher />
+        </li>
         <li className="flex items-center justify-center">
           <Link
             href="/cart"

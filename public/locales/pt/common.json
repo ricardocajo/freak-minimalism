@@ -1,0 +1,24 @@
+{
+  "welcome": "Bem-vindo ao Freak Minimalism!",
+  "about": "Sobre",
+  "cart": "Carrinho",
+  "navbar": {
+    "about": "Sobre",
+    "tshirts": "Camisetas",
+    "pants": "Calças",
+    "sweatshirts": "Sweatshirts"
+  },
+  "values": {
+    "title": "Nossos Valores",
+    "list": [
+      "Qualidade na Confecção",
+      "Práticas Sustentáveis",
+      "Design Eterno",
+      "Satisfação do Cliente"
+    ]
+  },
+  "mission": {
+    "title": "Nossa Missão",
+    "content": "Criar uma coleção de roupas minimalistas que permita expressar seu estilo pessoal mantendo um visual limpo e sofisticado."
+  }
+}
