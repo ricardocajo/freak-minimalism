@@ -58,6 +58,13 @@
     },
     "checkout": "Continue"
   },
+  "productDetails": {
+    "composition": "COMPOSITION",
+    "care": "CARE",
+    "origin": "ORIGIN",
+    "youMightAlsoLike": "YOU MIGHT ALSO LIKE...",
+    "color": "Color"
+  },
   "customizePage": {
     "title": "Customize Your Order",
     "description": "At Freak Minimalism, we understand that every individual is unique. That's why we offer a customization service to ensure you get exactly what you want.",

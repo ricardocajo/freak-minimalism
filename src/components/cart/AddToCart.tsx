@@ -6,6 +6,7 @@ import { useCart } from "@/contexts/CartContext";
 import { CartItem } from "@/contexts/CartContext";
 import { Product } from "@/types/types";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 interface AddToCartProps {
   product: Product;
@@ -18,6 +19,7 @@ export const AddToCart = ({
   selectedColor,
   selectedSize,
 }: AddToCartProps) => {
+  const { t } = useTranslation();
   const { addToCart } = useCart();
   const [isPending, startTransition] = useTransition();
 
@@ -47,7 +49,7 @@ export const AddToCart = ({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <span className="text-sm text-gray-500">Color: {selectedColor}</span>
+        <span className="text-sm text-gray-500">{t('productDetails.color')}: {selectedColor}</span>
       </div>
       <button
         onClick={handleAddToCart}
