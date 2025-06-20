@@ -1,24 +1,30 @@
 {
-  "welcome": "Bem-vindo ao Freak Minimalism!",
+  "welcome": "Bem-vindo à Freak Minimalism!",
   "about": "Sobre",
   "cart": "Carrinho",
   "navbar": {
     "about": "Sobre",
-    "tshirts": "Camisetas",
+    "tshirts": "T-Shirts",
     "pants": "Calças",
-    "sweatshirts": "Sweatshirts"
+    "sweatshirts": "Sweatshirts",
+    "collections": "Coleções",
+    "viewAll": "VER TODOS",
+    "discoverWardrobe": "Descubra peças essenciais para todas as ocasiões.",
+    "tshirtsDescription": "Nossas camisetas masculinas oferecem estilo atemporal em uma variedade de designs, cores e texturas. Do clássico ao contemporâneo, encontre a camiseta perfeita para qualquer ocasião.",
+    "pantsDescription": "Explore calças masculinas essenciais para todas as ocasiões. Do chino clássico ao moderno jogger, encontre seu ajuste perfeito em uma variedade de estilos e cores.",
+    "sweatshirtsDescription": "Assim como a camiseta, as sweatshirts masculinas são muito mais do que básicas."
   },
   "values": {
     "title": "Nossos Valores",
     "list": [
-      "Qualidade na Confecção",
-      "Práticas Sustentáveis",
-      "Design Eterno",
-      "Satisfação do Cliente"
+      { "value": "Qualidade" },
+      { "value": "Práticas Sustentáveis" },
+      { "value": "Design Eterno" },
+      { "value": "Satisfação do Cliente" }
     ]
   },
   "mission": {
     "title": "Nossa Missão",
-    "content": "Criar uma coleção de roupas minimalistas que permita expressar seu estilo pessoal mantendo um visual limpo e sofisticado."
+    "content": "Criar uma coleção de roupas minimalistas que permita expressar seu estilo pessoal mantendo uma aparência limpa e sofisticada."
   }
 }

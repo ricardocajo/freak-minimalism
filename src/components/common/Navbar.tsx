@@ -132,7 +132,7 @@ export const Navbar = () => {
             href="/about"
             className="text-sm px-4 py-2 transition-all lg:text-[#A1A1A1] hover:text-[#EDEDED] font-medium flex items-center"
           >
-            About
+            {t('navbar.about')}
           </Link>
         </li>
         <li>

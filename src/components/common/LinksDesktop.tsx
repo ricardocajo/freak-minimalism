@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 import { cn } from "@/libs/utils";
 import {
@@ -14,11 +15,12 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export function LinksDesktop() {
+  const { t } = useTranslation('common');
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
+          <NavigationMenuTrigger>{t('navbar.collections')}</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -28,26 +30,22 @@ export function LinksDesktop() {
                     href="/"
                   >
                     <div className="mt-4 mb-1 text-sm font-medium">
-                      VIEW ALL
+                      {t('navbar.viewAll')}
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Discover wardrobe staples for every occasion.
+                      {t('navbar.discoverWardrobe')}
                     </p>
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/t-shirts" title="T-SHIRTS">
-                Our men&apos;s T-shirts offer timeless style in a range of
-                designs, colors, and textures. From classic to contemporary,
-                find the perfect tee for any occasion.
+              <ListItem href="/t-shirts" title={t('navbar.tshirts')}>
+                {t('navbar.tshirtsDescription')}
               </ListItem>
-              <ListItem href="/pants" title="PANTS">
-                Explore essential men&apos;s pants for all occasions. From
-                classic chinos to modern joggers, find your perfect fit in a
-                variety of styles and colors.
+              <ListItem href="/pants" title={t('navbar.pants')}>
+                {t('navbar.pantsDescription')}
               </ListItem>
-              <ListItem href="/sweatshirts" title="SWEATSHIRTS">
-                Much like the T-shirt, men&apos;s sweatshirts are far more than
+              <ListItem href="/sweatshirts" title={t('navbar.sweatshirts')}>
+                {t('navbar.sweatshirtsDescription')}
                 a basic.
               </ListItem>
             </ul>
