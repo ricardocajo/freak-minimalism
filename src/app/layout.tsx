@@ -30,7 +30,6 @@ export default function RootLayout({
         <I18nProvider>
           <CartProvider>
             <Providers>
-              <I18nInitializer />
               <Navbar />
               <main className="pointer-events-auto">
                 {children}
