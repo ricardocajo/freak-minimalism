@@ -57,5 +57,96 @@
       "tax": "+ TAX INCL."
     },
     "checkout": "Continuar"
+  },
+  "customizePage": {
+    "title": "Personalize seu Pedido",
+    "description": "Na Freak Minimalism, entendemos que cada indivíduo é único. É por isso que oferecemos um serviço de personalização para garantir que você obtenha exatamente o que deseja.",
+    "personalization": {
+      "title": "Opções de Personalização",
+      "options": [
+        "Bordado personalizado",
+        "Combinações de cores personalizadas",
+        "Ajustes de tamanho personalizados",
+        "Solicitações especiais"
+      ]
+    },
+    "howTo": {
+      "title": "Como Personalizar",
+      "steps": [
+        "Adicione o produto desejado ao seu carrinho",
+        "Prossiga para o checkout",
+        "Na seção de notas, especifique seus requisitos de personalização",
+        "Nossa equipe entrará em contato para confirmar os detalhes"
+      ]
+    },
+    "leadTime": {
+      "title": "Tempo de Entrega",
+      "description": "Pedidos personalizados levam aproximadamente 2-3 semanas para serem concluídos. Isso nos permite garantir a mais alta qualidade e atenção aos detalhes."
+    }
+  },
+  "sizeGuidePage": {
+    "title": "Guia de Tamanhos",
+    "description": "Encontrar o tamanho perfeito é essencial para o conforto e estilo. Use nosso guia de tamanhos para garantir que você obtenha o tamanho correto para nossa roupa minimalista.",
+    "howToMeasure": {
+      "title": "Como Medir",
+      "steps": [
+        "Medir o peito no ponto mais largo",
+        "Medir a cintura na linha natural da cintura",
+        "Medir a entreperna do entrecoxas ao tornozelo"
+      ]
+    },
+    "sizeCharts": {
+      "title": "Tabela de Tamanhos",
+      "tshirts": {
+        "title": "Camisetas",
+        "chest": "Peito (cm)",
+        "length": "Comprimento (cm)"
+      },
+      "pants": {
+        "title": "Calças",
+        "waist": "Cintura (cm)",
+        "inseam": "Entreperna (cm)"
+      }
+    }
+  },
+  "deliveryPage": {
+    "title": "Informações de Entrega",
+    "description": "Oferecemos envio rápido e confiável em todo o mundo. Aqui está tudo o que você precisa saber sobre nosso processo de entrega.",
+    "shippingOptions": {
+      "title": "Opções de Envio",
+      "standard": {
+        "title": "Envio Padrão",
+        "duration": "5-7 dias úteis",
+        "price": "Grátis para pedidos acima de €50"
+      },
+      "express": {
+        "title": "Envio Expresso",
+        "duration": "2-3 dias úteis",
+        "price": "€15"
+      }
+    },
+    "shippingAreas": {
+      "title": "Áreas de Envio",
+      "europe": {
+        "title": "Europa",
+        "standard": "Envio padrão disponível",
+        "express": "Envio expresso disponível"
+      },
+      "world": {
+        "title": "Resto do Mundo",
+        "standard": "Envio padrão disponível",
+        "express": "Envio expresso disponível (taxas adicionais podem ser aplicadas)"
+      }
+    },
+    "tracking": {
+      "title": "Acompanhamento do Pedido",
+      "description": "Assim que seu pedido for enviado, você receberá um número de rastreamento por email. Você pode rastrear seu pacote usando esse número em nosso site ou no site da transportadora."
+    },
+    "times": {
+      "title": "Tempos de Envio",
+      "processing": "Tempo de processamento: 1-2 dias úteis",
+      "standard": "Envio padrão: 5-7 dias úteis",
+      "express": "Envio expresso: 2-3 dias úteis"
+    }
   }
 }

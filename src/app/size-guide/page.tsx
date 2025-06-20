@@ -1,43 +1,75 @@
 'use client';
+import { useTranslation } from 'react-i18next';
+
+interface SizeGuideTranslations {
+  title: string;
+  description: string;
+  howToMeasure: {
+    title: string;
+    steps: string[];
+  };
+  sizeCharts: {
+    title: string;
+    tshirts: {
+      title: string;
+      chest: string;
+      length: string;
+    };
+    pants: {
+      title: string;
+      waist: string;
+      inseam: string;
+    };
+  };
+}
 
 export default function SizeGuidePage() {
+  const { t, ready } = useTranslation();
+  const translations = t('sizeGuidePage', { returnObjects: true }) as SizeGuideTranslations;
+
+  if (!ready) {
+    return <div>Loading...</div>;
+  }
+
+  if (!translations) {
+    return <div>Error loading translations</div>;
+  }
+
   return (
     <main className="flex flex-col gap-12">
-      <h1 className="text-2xl font-bold">Size Guide</h1>
+      <h1 className="text-2xl font-bold">{translations.title}</h1>
       <div className="max-w-2xl">
         <p className="text-lg mb-6">
-          Finding the perfect fit is essential for comfort and style. Use our size guide to ensure you get the right size for our minimalist clothing.
+          {translations.description}
         </p>
         <div className="grid gap-6">
           <div className="p-6 border border-solid border-border-primary rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">How to Measure</h2>
+            <h2 className="text-xl font-semibold mb-4">{translations.howToMeasure?.title || 'How to Measure'}</h2>
             <div className="grid gap-4">
-              <div className="flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">1</span>
-                <p>Measure your chest at the widest point</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">2</span>
-                <p>Measure your waist at the natural waistline</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">3</span>
-                <p>Measure your inseam from crotch to ankle</p>
-              </div>
+              {Array.isArray(translations.howToMeasure?.steps) ? (
+                translations.howToMeasure.steps.map((step, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">{index + 1}</span>
+                    <p>{step}</p>
+                  </div>
+                ))
+              ) : (
+                <p>Loading measurements...</p>
+              )}
             </div>
           </div>
           
           <div className="p-6 border border-solid border-border-primary rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">Size Charts</h2>
+            <h2 className="text-xl font-semibold mb-4">{translations.sizeCharts?.title || 'Size Charts'}</h2>
             <div className="grid gap-6">
               <div>
-                <h3 className="text-lg font-semibold mb-2">T-Shirts</h3>
+                <h3 className="text-lg font-semibold mb-2">{translations.sizeCharts?.tshirts?.title || 'T-Shirts'}</h3>
                 <table className="w-full border border-solid border-border-primary">
                   <thead>
                     <tr className="bg-black">
                       <th className="p-2">Size</th>
-                      <th className="p-2">Chest (cm)</th>
-                      <th className="p-2">Length (cm)</th>
+                      <th className="p-2">{translations.sizeCharts?.tshirts?.chest || 'Chest (cm)'}</th>
+                      <th className="p-2">{translations.sizeCharts?.tshirts?.length || 'Length (cm)'}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -66,13 +98,13 @@ export default function SizeGuidePage() {
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold mb-2">Pants</h3>
+                <h3 className="text-lg font-semibold mb-2">{translations.sizeCharts?.pants?.title || 'Pants'}</h3>
                 <table className="w-full border border-solid border-border-primary">
                   <thead>
                     <tr className="bg-black">
                       <th className="p-2">Size</th>
-                      <th className="p-2">Waist (cm)</th>
-                      <th className="p-2">Inseam (cm)</th>
+                      <th className="p-2">{translations.sizeCharts?.pants?.waist || 'Waist (cm)'}</th>
+                      <th className="p-2">{translations.sizeCharts?.pants?.inseam || 'Inseam (cm)'}</th>
                     </tr>
                   </thead>
                   <tbody>
