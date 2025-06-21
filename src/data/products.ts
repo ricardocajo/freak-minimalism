@@ -23,8 +23,6 @@ interface Product {
   images: string[];
   colors: string[];
   sizes: string[];
-  featured?: boolean;
-  new?: boolean;
   discountPrice?: number;
 }
 
@@ -56,8 +54,6 @@ export const products: Product[] = [
     ],
     colors: ["Black", "White"],
     sizes: ["S", "M", "L", "XL"],
-    featured: true,
-    new: true,
     discountPrice: 30,
   },
 
@@ -87,9 +83,7 @@ export const products: Product[] = [
       "/images/pants/pants2.png"
     ],
     colors: ["Navy", "Beige"],
-    sizes: ["28", "30", "32", "34"],
-    featured: true,
-    new: true
+    sizes: ["28", "30", "32", "34"]
   },
 
   // Sweatshirts
@@ -118,8 +112,6 @@ export const products: Product[] = [
       "/images/sweatshirts/sweatshirt2.png"
     ],
     colors: ["Black", "Gray"],
-    sizes: ["S", "M", "L", "XL"],
-    featured: true,
-    new: true
+    sizes: ["S", "M", "L", "XL"]
   },
 ];
