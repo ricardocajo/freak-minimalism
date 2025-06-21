@@ -1,5 +1,6 @@
 import { Products } from "@/components/products/Products";
 import { getAllProducts } from "../actions";
+import { Product } from '@/types/types';
 
 interface SearchProps {
   searchParams: { [key: string]: string | undefined };
@@ -13,13 +14,29 @@ const normalizeText = (text: string): string => {
 };
 
 const Search: React.FC<SearchProps> = async ({ searchParams }) => {
-  const products = await getAllProducts();
-  let filteredProducts = [];
+  const products = getAllProducts();
+  let filteredProducts: Product[] = [];
 
   if (products) {
-    filteredProducts = products.filter((product) =>
-      normalizeText(product.name).includes(normalizeText(searchParams.q || ""))
-    );
+    try {
+      if (searchParams.q) {
+        const searchTerm = searchParams.q as string;
+        filteredProducts = products.filter((product) => {
+          const normalizedSearch = normalizeText(searchTerm);
+          const normalizedEnName = normalizeText(product.translations.en.name);
+          const normalizedPtName = normalizeText(product.translations.pt.name);
+          
+          // Check if search term matches either English or Portuguese name
+          return normalizedEnName.includes(normalizedSearch) || 
+                 normalizedPtName.includes(normalizedSearch);
+        });
+      } else {
+        filteredProducts = products;
+      }
+    } catch (error: any) {
+      console.error('Error filtering products:', error);
+      filteredProducts = [];
+    }
   }
 
   return (
