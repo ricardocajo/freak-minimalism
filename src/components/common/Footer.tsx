@@ -80,32 +80,24 @@ export const Footer = () => {
           </ul>
         </div>
         <div className="w-full max-w-xs order-1 md:order-2">
-          <h2 className="my-3 text-sm font-medium">{t('footer.about')}</h2>
+          <h2 className="my-3 text-sm font-medium">{t('navbar.partnerships')}</h2>
           <ul className="grid grid-cols-2">
             <li className={liStyles}>
               <Link
-                href="https://www.instagram.com/freakminimalism/"
+                href="https://www.facebook.com/dora.isabel.batista"
                 target="_blank"
                 className={linkStyles}
               >
-                Instagram
+                Decorações Dorita
               </Link>
             </li>
             <li className={liStyles}>
               <Link
-                href="https://api.whatsapp.com/send?phone=351927771505"
+                href="https://www.instagram.com/mandalakaos/"
                 target="_blank"
                 className={linkStyles}
               >
-                WhatsApp
-              </Link>
-            </li>
-            <li className={liStyles}>
-              <Link
-                href="mailto:freakminimalism@gmail.com"
-                className={linkStyles}
-              >
-                Email
+                Mandala Kaos
               </Link>
             </li>
           </ul>
