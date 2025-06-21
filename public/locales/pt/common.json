@@ -52,6 +52,7 @@
       "description": "Quando você adicionar algo ao seu carrinho, ele aparecerá aqui. Quer começar?",
       "button": "Começar"
     },
+    "viewAll": "VER TODOS",
     "total": {
       "label": "Total:",
       "tax": "+ TAX INCL."

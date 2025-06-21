@@ -112,7 +112,7 @@ export const Navbar = () => {
             </li>
             <li className="flex items-center justify-center">
               <Link href="/" onClick={toggleHeader}>
-                VIEW ALL
+                {t('cartPage.viewAll')}
               </Link>
             </li>
             {linksData.slice(1).map((link, index) => (

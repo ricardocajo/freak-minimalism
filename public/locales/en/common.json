@@ -52,6 +52,7 @@
       "description": "When you have added something to your cart, it will appear here. Want to get started?",
       "button": "Start"
     },
+    "viewAll": "VIEW ALL",
     "total": {
       "label": "Total:",
       "tax": "+ TAX INCL."
