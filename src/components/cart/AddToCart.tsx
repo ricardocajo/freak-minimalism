@@ -20,7 +20,6 @@ export const AddToCart = ({
   selectedSize,
 }: AddToCartProps) => {
   const { t, i18n } = useTranslation();
-  const language = i18n.language as 'en' | 'pt';
   const { addToCart } = useCart();
   const [isPending, startTransition] = useTransition();
 

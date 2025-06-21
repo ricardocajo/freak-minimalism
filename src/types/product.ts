@@ -5,8 +5,6 @@ export interface Product {
   images: string[];
   colors: string[];
   sizes: string[];
-  featured: boolean;
-  new: boolean;
   quantity: number;
   selectedColor?: string;
   selectedSize?: string;
