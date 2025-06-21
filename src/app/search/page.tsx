@@ -1,6 +1,10 @@
+"use client";
+
 import { Products } from "@/components/products/Products";
 import { getAllProducts } from "../actions";
 import { Product } from '@/types/types';
+import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 interface SearchProps {
   searchParams: { [key: string]: string | undefined };
@@ -39,14 +43,41 @@ const Search: React.FC<SearchProps> = async ({ searchParams }) => {
     }
   }
 
+  const { t } = useTranslation('common');
+
   return (
     <section className="">
       {filteredProducts.length > 0 ? (
         <Products products={filteredProducts} extraClassname="" />
       ) : (
-        <h3 className="text-sm text-center">
-          No products found for &quot;{searchParams.q}&quot;
-        </h3>
+        <div className="flex flex-col items-center justify-center gap-4">
+          <h3 className="text-sm text-center">
+            No products found for "{searchParams.q}"
+          </h3>
+          <div className="flex items-center justify-center p-4 bg-black rounded-full">
+            <div className="flex flex-col items-center text-center">
+              <Link
+                href="/customize"
+                className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-gradient-to-r from-[#00B4DB] to-[#0083B0] text-white rounded-full hover:from-[#00A1CE] hover:to-[#007195] transition-all"
+              >
+                {t('products.customizeButton')}
+                <svg
+                  className="w-2.5 h-2.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
       )}
     </section>
   );
