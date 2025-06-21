@@ -18,7 +18,8 @@ interface SingleProductProps {
 }
 
 export const SingleProduct = ({ product }: SingleProductProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'pt';
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
@@ -31,7 +32,8 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
         <div className="sticky flex flex-col items-center justify-center w-full h-full gap-5 grow basis-600 top-8">
           <div className="w-full border border-solid rounded border-border-primary bg-background-secondary">
             <div className="flex flex-col justify-between gap-3 p-5 border-b border-solid border-border-primary">
-              <h1 className="text-base font-semibold">{product.name}</h1>
+              <h1 className="text-3xl font-bold mb-4">{product.translations[language].name}</h1>
+              <p className="text-gray-500 mb-6">{product.translations[language].description}</p>
               {product.discountPrice && (
                 <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
                   {Math.round(((product.price - product.discountPrice) / product.price) * 100)}% OFF
@@ -45,7 +47,6 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
               ) : (
                 <span className="text-sm">{product.price}€</span>
               )}
-              <p className="text-sm">{product.description}</p>
             </div>
             <div className="p-5">
               <div className="grid grid-cols-4 gap-2.5 justify-center">
@@ -54,7 +55,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                     key={size}
                     onClick={() => setSelectedSize(size)}
                     className={`flex items-center justify-center border border-solid border-border-primary px-1 py-1.5 bg-black rounded transition duration-150 ease text-13 ${
-                      selectedSize === size 
+                      selectedSize === size
                         ? 'bg-white text-black hover:bg-white'
                         : 'hover:border-border-secondary'
                     }`}
@@ -97,7 +98,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.composition}
+                  {product.translations[language].composition}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="care" className="border-b border-[#2E2E2E]">
@@ -106,7 +107,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.care}
+                  {product.translations[language].care}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="origin" className="border-b border-[#2E2E2E]">
@@ -115,7 +116,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  {product.origin}
+                  {product.translations[language].origin}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

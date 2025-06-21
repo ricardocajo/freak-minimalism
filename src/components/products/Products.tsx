@@ -11,7 +11,8 @@ interface ProductsProps {
 }
 
 export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'pt';
   const showCustomization = extraClassname.startsWith('category-') || extraClassname === '';
   const gridClassname = [
     "grid gap-x-3.5 gap-y-6 sm:gap-y-9",
@@ -71,7 +72,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
               <div className="relative">
                 <Images
                   src={product.images[0]}
-                  alt={product.name}
+                  alt={product.translations[language].name}
                   className="w-full max-w-img aspect-[2/3] brightness-90"
                 />
               </div>
@@ -79,7 +80,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
             <div className="flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
               <div className="flex justify-between w-full">
                 <Link href={`/products/${product.id}`} className="w-10/12">
-                  <h2 className="text-sm font-semibold truncate">{product.name}</h2>
+                  <h2 className="text-sm font-semibold truncate">{product.translations[language].name}</h2>
                 </Link>
                 {product.discountPrice && (
                   <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
