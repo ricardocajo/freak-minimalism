@@ -19,13 +19,14 @@ export const AddToCart = ({
   selectedColor,
   selectedSize,
 }: AddToCartProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'pt';
   const { addToCart } = useCart();
   const [isPending, startTransition] = useTransition();
 
   const handleAddToCart = useCallback(() => {
     if (!selectedSize) {
-      toast.error("You have to select a size to save the product");
+      toast.error(t('products.no_size_message'));
       return;
     }
 
@@ -42,7 +43,7 @@ export const AddToCart = ({
 
     startTransition(() => {
       addToCart(cartItem);
-      toast.success("Added to cart");
+      toast.success(t('cart.added_to_cart'));
     });
   }, [product, selectedColor, selectedSize, addToCart]);
 
@@ -52,10 +53,10 @@ export const AddToCart = ({
         <span className="text-sm text-gray-500">{t('productDetails.color')}: {selectedColor}</span>
       </div>
       <button
-        onClick={handleAddToCart}
         className="w-full px-4 py-2 text-white bg-black rounded hover:bg-gray-800 transition-colors"
+        onClick={handleAddToCart}
       >
-        {isPending ? "Adding..." : "Add to Cart"}
+        {isPending ? t('cart.adding_to_cart') : t('cart.add_to_cart')}
       </button>
     </div>
   );

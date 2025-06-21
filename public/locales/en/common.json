@@ -1,7 +1,12 @@
 {
   "welcome": "Welcome to Freak Minimalism!",
   "about": "About",
-  "cart": "Cart",
+  "cart": {
+    "title": "Cart",
+    "added_to_cart": "Added to cart",
+    "add_to_cart": "Add to cart",
+    "adding_to_cart": "Adding to cart..."
+  },
   "navbar": {
     "about": "About",
     "art": "Art",
@@ -55,7 +60,8 @@
   },
   "products": {
     "customizeButton": "Send us your idea",
-    "customizeMessage": "Don't find what you're looking for?"
+    "customizeMessage": "Don't find what you're looking for?",
+    "no_size_message": "You have to select a size to save the product"
   },
   "cartPage": {
     "title": "YOUR SHOPPING CART",

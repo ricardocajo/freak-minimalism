@@ -1,7 +1,12 @@
 {
   "welcome": "Bem-vindo à Freak Minimalism!",
   "about": "Sobre",
-  "cart": "Carrinho",
+  "cart": {
+    "title": "Carrinho",
+    "added_to_cart": "Adicionado ao carrinho",
+    "add_to_cart": "Adicionar ao carrinho",
+    "adding_to_cart": "Adicionando ao carrinho..."
+  },
   "navbar": {
     "about": "Sobre",
     "art": "Arte",
@@ -55,7 +60,8 @@
   },
   "products": {
     "customizeButton": "Envia-nos a tua ideia",
-    "customizeMessage": "Não encontras o que estás à procura?"
+    "customizeMessage": "Não encontras o que estás à procura?",
+    "no_size_message": "Você tem que selecionar um tamanho para salvar o produto"
   },
   "cartPage": {
     "title": "SEU CARRINHO DE COMPRAS",
