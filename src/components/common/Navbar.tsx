@@ -33,9 +33,15 @@ export const Navbar = () => {
 
   const linksData = [
     { path: "/about", name: t('navbar.about') },
-    { path: "/t-shirts", name: t('navbar.tshirts') },
-    { path: "/pants", name: t('navbar.pants') },
-    { path: "/sweatshirts", name: t('navbar.sweatshirts') },
+    { path: "/new", name: t('navbar.new') },
+    { path: "/art", name: t('navbar.art') },
+    { path: "/3dworks", name: t('navbar.3dworks') },
+    { path: "/hats", name: t('navbar.hats') },
+    { path: "/kids", name: t('navbar.kids') },
+    { path: "/accessories", name: t('navbar.accessories') },
+    { path: "/woman", name: t('navbar.woman') },
+    { path: "/man", name: t('navbar.man') },
+    { path: "/partnerships", name: t('navbar.partnerships') },
   ];
 
   const authLinks = () => {

@@ -38,15 +38,32 @@ export function LinksDesktop() {
                   </Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/t-shirts" title={t('navbar.tshirts')}>
-                {t('navbar.tshirtsDescription')}
+              <ListItem href="/new" title={t('navbar.new')}>
+                {t('navbar.newDescription')}
               </ListItem>
-              <ListItem href="/pants" title={t('navbar.pants')}>
-                {t('navbar.pantsDescription')}
+              <ListItem href="/art" title={t('navbar.art')}>
+                {t('navbar.artDescription')}
               </ListItem>
-              <ListItem href="/sweatshirts" title={t('navbar.sweatshirts')}>
-                {t('navbar.sweatshirtsDescription')}
-                a basic.
+              <ListItem href="/3dworks" title={t('navbar.3dworks')}>
+                {t('navbar.3dworksDescription')}
+              </ListItem>
+              <ListItem href="/hats" title={t('navbar.hats')}>
+                {t('navbar.hatsDescription')}
+              </ListItem>
+              <ListItem href="/kids" title={t('navbar.kids')}>
+                {t('navbar.kidsDescription')}
+              </ListItem>
+              <ListItem href="/accessories" title={t('navbar.accessories')}>
+                {t('navbar.accessoriesDescription')}
+              </ListItem>
+              <ListItem href="/woman" title={t('navbar.woman')}>
+                {t('navbar.womanDescription')}
+              </ListItem>
+              <ListItem href="/man" title={t('navbar.man')}>
+                {t('navbar.manDescription')}
+              </ListItem>
+              <ListItem href="/partnerships" title={t('navbar.partnerships')}>
+                {t('navbar.partnershipsDescription')}
               </ListItem>
             </ul>
           </NavigationMenuContent>
