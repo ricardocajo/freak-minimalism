@@ -34,19 +34,19 @@ export const products: Product[] = [
       en: {
         name: "Can I Lick T-Shirt",
         description: "A classic freak-minimalism t-shirt, do you Lick?",
-        composition: "100% cotton",
-        care: "Machine wash cold. Do not bleach. Tumble dry low.",
-        origin: "Made in Portugal",
+        composition: "100% pre-shrunk cotton | 184g",
+        care: "It is recommended to iron the shirt inside out to preserve the embroidery.",
+        origin: "-",
       },
       pt: {
         name: "Camiseta Minimal Logo",
         description: "Uma t-shirt clássica freak-minimalism, do you Lick?",
-        composition: "100% algodão",
-        care: "Lavar na máquina em água fria. Não alvejar. Secar em baixa temperatura.",
-        origin: "Feito em Portugal",
+        composition: "100% algodão pré-encolhido | 184g",
+        care: "Recomenda-se passar a blusa do avesso para preservar o bordado",
+        origin: "-",
       }
     },
-    price: 35.00,
+    price: 30.00,
     categories: ["man"],
     images: [
       "/images/tshirts/canilick1.png",
@@ -54,6 +54,7 @@ export const products: Product[] = [
     ],
     colors: ["Black", "White"],
     sizes: ["S", "M", "L", "XL"],
+    discountPrice: 27.75
   },
 
   // Pants
