@@ -17,11 +17,11 @@ export async function POST(request: Request) {
 
     // Create metadata for the session
     const sessionMetadata = {
-      items: JSON.stringify(cartItems.map(item => ({
-        _id: item._id,
-        size: item.size,
-        color: item.color
-      })))
+      items: cartItems.map((item, index) => 
+        `${item._id}-${item.size}-${item.color}-${item.quantity}`
+      ).join(','),
+      total_items: cartItems.length.toString(),
+      total_amount: cartItems.reduce((sum, item) => sum + (item.discountPrice || item.price) * item.quantity, 0).toFixed(2)
     };
 
     const session = await stripe.checkout.sessions.create({

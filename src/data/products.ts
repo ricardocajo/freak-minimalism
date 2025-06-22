@@ -29,13 +29,13 @@ export const products: Product[] = [
     _id: "price_1Rcp0dCTQhRcTCnZuw62MZNr",
     translations: {
       en: {
-        name: "Can I Lick T-Shirt",
+        name: "test",
         description: "A classic freak-minimalism t-shirt, do you Lick?",
         composition: "100% pre-shrunk cotton | 184g",
         care: "It is recommended to iron the shirt inside out to preserve the embroidery."
       },
       pt: {
-        name: "Camiseta Minimal Logo",
+        name: "test",
         description: "Uma t-shirt clássica freak-minimalism, do you Lick?",
         composition: "100% algodão pré-encolhido | 184g",
         care: "Recomenda-se passar a blusa do avesso para preservar o bordado"
@@ -60,7 +60,7 @@ export const products: Product[] = [
         care: "It is recommended to iron the shirt inside out to preserve the embroidery."
       },
       pt: {
-        name: "Camiseta Minimal Logo",
+        name: "Can I Lick T-Shirt",
         description: "Uma t-shirt clássica freak-minimalism, do you Lick?",
         composition: "100% algodão pré-encolhido | 184g",
         care: "Recomenda-se passar a blusa do avesso para preservar o bordado"
@@ -76,9 +76,8 @@ export const products: Product[] = [
     sizes: ["M"],
     discountPrice: 27.75
   },
-
   {
-    _id: "prod_SXsYAnqWDhzSsY",
+    _id: "price_1RcpHYCTQhRcTCnZZ2o0wLle",
     translations: {
       en: {
         name: "Demon Slayer Nezuko T-Shirt",
@@ -94,19 +93,18 @@ export const products: Product[] = [
         
       }
     },
-    price: 65.00,
-    categories: ["woman",],
+    price: 25.00,
+    categories: ["woman", "new"],
     images: [
       "/images/new/demonslayer1.png",
       "/images/new/demonslayer2.png"
     ],
     colors: ["White"],
     sizes: ["M"],
-    discountPrice: 30
+    discountPrice: 20.00
   },
-
   {
-    _id: "prod_SXseE5NDhExNuR",
+    _id: "price_1RcpI3CTQhRcTCnZFQ6MZ9hX",
     translations: {
       en: {
         name: "Naruto Team 7 ",
@@ -122,13 +120,40 @@ export const products: Product[] = [
       }
     },
     price: 48.00,
-    categories: ["man"],
+    categories: ["man", "new"],
     images: [
       "/images/new/naruto1.png",
       "/images/new/naruto2.png"
     ],
     colors: ["Black"],
     sizes: ["M"],
-    discountPrice: 30
+    discountPrice: 40.00
   },
+  {
+    _id: "",
+    translations: {
+      en: {
+        name: "GIЯLS Art",
+        description: "Artist: Andre Daniel",
+        composition: "Dimentions: 80x48 cm",
+        care: "-",
+      },
+      pt: {
+        name: "GIЯLS Arte",
+        description: "Artista: Andre Daniel",
+        composition: "Dimensoes: 80x48 cm",
+        care: "-",
+        
+      }
+    },
+    price: 777.00,
+    categories: ["art"],
+    images: [
+      "/images/art/girls1.png",
+      "/images/art/girls2.png"
+    ],
+    colors: ["White"],
+    sizes: ["M"],
+    discountPrice: 369.00
+  }
 ];
