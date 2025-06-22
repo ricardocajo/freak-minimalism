@@ -15,7 +15,6 @@ interface ProductTranslations {
 
 interface Product {
   _id: string;
-  name: string;
   translations: ProductTranslations;
   price: number;
   categories: string[];
@@ -23,15 +22,36 @@ interface Product {
   colors: string[];
   sizes: string[];
   discountPrice?: number;
-  featured?: boolean;
-  new?: boolean;
 }
 
 export const products: Product[] = [
-  // T-Shirts
   {
-    _id: "canilick",
-    name: "Can I Lick T-Shirt",
+    _id: "price_1Rcp0dCTQhRcTCnZuw62MZNr",
+    translations: {
+      en: {
+        name: "Can I Lick T-Shirt",
+        description: "A classic freak-minimalism t-shirt, do you Lick?",
+        composition: "100% pre-shrunk cotton | 184g",
+        care: "It is recommended to iron the shirt inside out to preserve the embroidery."
+      },
+      pt: {
+        name: "Camiseta Minimal Logo",
+        description: "Uma t-shirt clássica freak-minimalism, do you Lick?",
+        composition: "100% algodão pré-encolhido | 184g",
+        care: "Recomenda-se passar a blusa do avesso para preservar o bordado"
+      }
+    },
+    price: 1.00,
+    categories: ["man"],
+    images: [
+      "/images/tshirts/canilick1.png",
+      "/images/tshirts/canilick2.png"
+    ],
+    colors: ["White"],
+    sizes: ["M"]
+  },
+  {
+    _id: "price_1RcltPCTQhRcTCnZs743CmYY",
     translations: {
       en: {
         name: "Can I Lick T-Shirt",
@@ -52,66 +72,63 @@ export const products: Product[] = [
       "/images/tshirts/canilick1.png",
       "/images/tshirts/canilick2.png"
     ],
-    colors: ["white", "black"],
-    sizes: ["S", "M", "L", "XL"],
+    colors: ["White"],
+    sizes: ["M"],
     discountPrice: 27.75
   },
 
-  // Pants
   {
-    _id: "demonslayer",
-    name: "Demon Slayer Nezuko T-Shirt",
+    _id: "prod_SXsYAnqWDhzSsY",
     translations: {
       en: {
         name: "Demon Slayer Nezuko T-Shirt",
         description: "For Demon Slayer fans - Nezuko style",
         composition: "65% cotton, 35% polyester",
-        care: "Machine wash cold. Do not bleach. Iron low heat."
+        care: "Machine wash cold. Do not bleach. Iron low heat.",
       },
       pt: {
         name: "Demon Slayer Nezuko T-Shirt",
         description: "Para fãs de Demon Slayer - Estilo Nezuko",
         composition: "65% algodão, 35% poliéster",
-        care: "Lavar na máquina em água fria. Não alvejar. Passar a ferro em baixa temperatura."
+        care: "Lavar na máquina em água fria. Não alvejar. Passar a ferro em baixa temperatura.",
+        
       }
     },
     price: 65.00,
-    categories: ["man", "new"],
+    categories: ["woman",],
     images: [
       "/images/new/demonslayer1.png",
       "/images/new/demonslayer2.png"
     ],
-    colors: ["White", "Navy", "Beige"],
-    sizes: ["28", "30", "32", "34"],
+    colors: ["White"],
+    sizes: ["M"],
     discountPrice: 30
   },
 
-  // Sweatshirts
   {
-    _id: "naruto",
-    name: "Naruto Team 7 T-Shirt",
+    _id: "prod_SXseE5NDhExNuR",
     translations: {
       en: {
-        name: "Naruto Team 7 T-Shirt",
-        description: "A Naruto Sasuke Sakura Kakashi T-Shirt",
+        name: "Naruto Team 7 ",
+        description: "A Naruto Sasuke Sakura Kakashi",
         composition: "80% cotton, 20% polyester",
-        care: "Machine wash cold. Do not bleach. Tumble dry low."
+        care: "Machine wash cold. Do not bleach. Tumble dry low.",
       },
       pt: {
         name: "Naruto Equipa 7 T-Shirt",
         description: "T-Shirt de Naruto Sasuke Sakura e Kakashi",
         composition: "80% algodão, 20% poliéster",
-        care: "Lavar na máquina em água fria. Não alvejar. Secar em baixa temperatura."
+        care: "Lavar na máquina em água fria. Não alvejar. Secar em baixa temperatura.",
       }
     },
     price: 48.00,
-    categories: ["new", "man"],
+    categories: ["man"],
     images: [
       "/images/new/naruto1.png",
       "/images/new/naruto2.png"
     ],
-    colors: ["Black", "Gray"],
-    sizes: ["S", "M", "L", "XL"],
+    colors: ["Black"],
+    sizes: ["M"],
     discountPrice: 30
   },
 ];

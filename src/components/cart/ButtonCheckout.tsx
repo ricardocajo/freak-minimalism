@@ -16,14 +16,7 @@ export const ButtonCheckout = ({ cartItems }: ButtonCheckoutProps) => {
   const lineItems = useMemo(
     () =>
       cartItems.map((item) => ({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: item.name,
-            images: [item.image],
-          },
-          unit_amount: Math.round(item.price * 100),
-        },
+        price: item._id, // Using _id as the Stripe price ID
         quantity: item.quantity,
       })),
     [cartItems]
@@ -31,7 +24,7 @@ export const ButtonCheckout = ({ cartItems }: ButtonCheckoutProps) => {
 
   const handleCheckout = useCallback(async () => {
     try {
-      const response = await axios.post("/api/checkout", { lineItems });
+      const response = await axios.post("/api/stripe/checkout_sessions", { cartItems });
       const { url } = response.data;
       window.location.href = url;
     } catch (error) {

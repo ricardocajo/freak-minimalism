@@ -1,27 +1,45 @@
-import { NextRequest, NextResponse } from "next/server";
+import Stripe from 'stripe';
+import { NextResponse } from 'next/server';
+import { CartItem } from '@/types/types';
 
-import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-08-16",
+  apiVersion: '2023-08-16',
 });
 
-async function handler(req: NextRequest, res: NextResponse) {
-  const query = new URL(req.url).searchParams;
-  const session_id: string = query.get("session_id") as string;
-
+export async function POST(request: Request) {
   try {
-    if (!session_id.startsWith("cs_")) {
-      throw Error("Incorrect CheckoutSession ID.");
-    }
-    const checkout_session: Stripe.Checkout.Session =
-      await stripe.checkout.sessions.retrieve(session_id, {
-        expand: ["payment_intent"],
-      });
+    const { cartItems } = await request.json();
+    
+    const lineItems = cartItems.map((item: CartItem) => ({
+      price: item._id, // Using _id as the Stripe price ID
+      quantity: item.quantity,
+      metadata: {
+        size: item.size,
+        color: item.color
+      }
+    }));
 
-    return NextResponse.json(checkout_session);
-  } catch (err: any) {
-    return NextResponse.json({ statusCode: 500, message: err.message });
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      mode: 'payment',
+      billing_address_collection: 'required',
+      shipping_address_collection: {
+      allowed_countries: ['PT'],
+      },
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart`,
+      metadata: {
+        userId: 'user_123', // Replace with actual user ID if you have authentication
+      },
+    });
+
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error('Stripe checkout session error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create checkout session' },
+      { status: 500 }
+    );
   }
 }
-
-export { handler as GET };

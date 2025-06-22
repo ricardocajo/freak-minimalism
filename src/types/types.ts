@@ -40,4 +40,5 @@ export interface CartItem {
   quantity: number;
   featured?: boolean;
   new?: boolean;
+  stripePriceId: string;
 }
