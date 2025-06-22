@@ -4,9 +4,10 @@ import { products as productData } from "@/data/products";
 export const products: Product[] = productData.map(product => ({
   ...product,
   id: product._id,
-  price: product.price,
-  images: product.images,
-  category: product.category
+  name: product.translations.en.name,
+  featured: false,
+  new: product.categories.includes('new'),
+  categories: product.categories
 }));
 
 export const getAllProducts = () => {
@@ -38,7 +39,7 @@ export const getCategoryProducts = (category: string) => {
 
   const mappedCategory = categoryMap[normalizedCategory] || normalizedCategory;
   
-  return products.filter((product) => product.category.toLowerCase() === mappedCategory.toLowerCase());
+  return products.filter((product) => product.categories.some(cat => cat.toLowerCase() === mappedCategory.toLowerCase()));
 };
 
 export const getProduct = (id: string) => {

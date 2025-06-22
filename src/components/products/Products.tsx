@@ -29,11 +29,11 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
         // Get the category from extraClassname (remove 'category-')
         const category = extraClassname.replace('category-', '').toLowerCase();
         
-        // Normalize the product category to lowercase for comparison
-        const productCategory = product.category.toLowerCase();
+        // Normalize all product categories to lowercase for comparison
+        const productCategories = product.categories.map(cat => cat.toLowerCase());
         
-        // Check if the category matches
-        return productCategory === category;
+        // Check if the category matches any of the product's categories
+        return productCategories.includes(category);
       })
     : products;
 

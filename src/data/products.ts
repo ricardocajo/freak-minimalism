@@ -19,7 +19,7 @@ interface Product {
   _id: string;
   translations: ProductTranslations;
   price: number;
-  category: string;
+  categories: string[];
   images: string[];
   colors: string[];
   sizes: string[];
@@ -47,7 +47,7 @@ export const products: Product[] = [
       }
     },
     price: 35.00,
-    category: "t-shirts",
+    categories: ["man"],
     images: [
       "/images/tshirts/canilick1.png",
       "/images/tshirts/canilick2.png"
@@ -76,7 +76,7 @@ export const products: Product[] = [
       }
     },
     price: 65.00,
-    category: "new",
+    categories: ["man", "new"],
     images: [
       "/images/new/demonslayer1.png",
       "/images/new/demonslayer2.png"
@@ -106,7 +106,7 @@ export const products: Product[] = [
       }
     },
     price: 48.00,
-    category: "new",
+    categories: ["new", "man"],
     images: [
       "/images/new/naruto1.png",
       "/images/new/naruto2.png"

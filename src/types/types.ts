@@ -24,7 +24,7 @@ export interface Product {
   images: string[];
   colors: string[];
   sizes: string[];
-  category: string;
+  categories: string[];
   featured: boolean;
   new: boolean;
   _id?: string;
