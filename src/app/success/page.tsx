@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -8,14 +8,18 @@ import { toast } from "sonner";
 export default function SuccessPage() {
   const { emptyCart } = useCart();
   const router = useRouter();
+  const [isCartCleared, setIsCartCleared] = useState(false);
 
   useEffect(() => {
-    emptyCart();
-    toast.success("Payment successful! Your order has been placed.");
-    setTimeout(() => {
-      router.push("/");
-    }, 3000);
-  }, [emptyCart, router]);
+    if (!isCartCleared) {
+      emptyCart();
+      toast.success("Payment successful! Your order has been placed.");
+      setIsCartCleared(true);
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    }
+  }, [router]);
 
   return (
     <div className="container mx-auto py-12">
