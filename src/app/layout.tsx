@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Quicksand } from "next/font/google";
+import '@/styles/globals.css';
 import "@/styles/globals.css";
 import { I18nProvider } from "@/components/common/I18nProvider";
 import { CartProvider } from "@/contexts/CartContext";
@@ -11,7 +12,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Providers from "./Providers";
 import { I18nInitializer } from "@/components/common/I18nInitializer";
 
-const inter = Inter({ subsets: ["latin"] });
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ['300', '400', '500', '600', '700']
+});
 
 export const metadata: Metadata = {
   title: "Freak Minimalism",
@@ -26,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt">
-      <body className={inter.className}>
+      <body className={quicksand.className}>
         <I18nProvider>
           <CartProvider>
             <Providers>

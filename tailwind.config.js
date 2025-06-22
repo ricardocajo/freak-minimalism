@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Quicksand', 'system-ui', 'sans-serif'],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

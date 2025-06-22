@@ -46,6 +46,7 @@ body {
 
 body {
   color: #ededed;
+  font-family: 'Quicksand', system-ui, sans-serif;
   background: linear-gradient(
       to bottom,
       transparent,
