@@ -12,9 +12,17 @@ export async function POST(request: Request) {
     
     const lineItems = cartItems.map((item: CartItem) => ({
       price: item._id, // Using _id as the Stripe price ID
-      quantity: item.quantity,
-      description: `${item.size} - ${item.color}`
+      quantity: item.quantity
     }));
+
+    // Create metadata for the session
+    const sessionMetadata = {
+      items: JSON.stringify(cartItems.map(item => ({
+        _id: item._id,
+        size: item.size,
+        color: item.color
+      })))
+    };
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -26,9 +34,7 @@ export async function POST(request: Request) {
       },
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart`,
-      metadata: {
-        userId: 'user_123', // Replace with actual user ID if you have authentication
-      },
+      metadata: sessionMetadata,
     });
 
     return NextResponse.json({ url: session.url });
