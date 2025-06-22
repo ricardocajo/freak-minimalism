@@ -37,7 +37,7 @@
     "react-flags-select": "^2.5.0",
     "react-i18next": "^15.5.3",
     "sonner": "^1.2.0",
-    "stripe": "^13.5.0",
+    "stripe": "^13.11.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.3.5",
     "tailwindcss-animate": "^1.0.7"
