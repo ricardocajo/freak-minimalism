@@ -60,7 +60,7 @@
   },
   "products": {
     "customizeButton": "Send us your idea",
-    "customizeMessage": "Don't find what you're looking for?",
+    "customizeMessage": "◐ 𝔇𝔦𝔣𝔣𝔢𝔯𝔢𝔫𝔱 𝔳𝔦𝔰𝔦𝔬𝔫, 𝔡𝔦𝔣𝔣𝔢𝔯𝔢𝔫𝔱 𝔰𝔱𝔶𝔩𝔢 ◑",
     "no_size_message": "You have to select a size to save the product"
   },
   "cartPage": {
@@ -96,12 +96,11 @@
       ]
     },
     "howTo": {
-      "title": "How to Customize",
+      "title": "How to Customize (Contact us by)",
       "steps": [
-        "Add the desired product to your cart",
-        "Proceed to checkout",
-        "In the notes section, specify your customization requirements",
-        "Our team will contact you to confirm details"
+        "WhatsApp. (+351 927 771 505)",
+        "Email",
+        "Instagram"
       ]
     },
     "leadTime": {

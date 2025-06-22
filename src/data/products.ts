@@ -77,6 +77,32 @@ export const products: Product[] = [
     discountPrice: 27.75
   },
   {
+    _id: "price_1RcpJECTQhRcTCnZ7eNVJb01",
+    translations: {
+      en: {
+        name: "Mandala Kaos Patch Fibonacci",
+        description: "-",
+        composition: "-",
+        care: "-",
+      },
+      pt: {
+        name: "Mandala Kaos Patch Fibonacci",
+        description: "-",
+        composition: "-",
+        care: "-",
+        
+      }
+    },
+    price: 10.00,
+    categories: ["partnerships", "accessories"],
+    images: [
+      "/images/parcerias/mandalakaos_fibonacci1.png",
+      "/images/parcerias/mandalakaos_fibonacci2.png"
+    ],
+    colors: ["White"],
+    sizes: ["M"]
+  },
+  {
     _id: "price_1RcpHYCTQhRcTCnZZ2o0wLle",
     translations: {
       en: {
@@ -130,7 +156,7 @@ export const products: Product[] = [
     discountPrice: 40.00
   },
   {
-    _id: "",
+    _id: "price_1RcpgqCTQhRcTCnZ7ktNsoWz",
     translations: {
       en: {
         name: "GIЯLS Art",

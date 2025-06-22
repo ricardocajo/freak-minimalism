@@ -32,6 +32,19 @@ export async function POST(request: Request) {
       shipping_address_collection: {
       allowed_countries: ['PT'],
       },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 550,
+              currency: 'eur',
+            },
+            display_name: 'Shipping', // Required
+            // delivery_estimate is optional
+          },
+        },
+      ],
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart`,
       metadata: sessionMetadata,

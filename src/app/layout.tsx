@@ -31,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="pt">
-      <body className={quicksand.className}>
+      <body className={`${quicksand.className} bg-[url('/fundo.jpeg')] bg-cover bg-center bg-fixed`} style={{ minHeight: '100vh' }}>
         <I18nProvider>
           <CartProvider>
             <Providers>
