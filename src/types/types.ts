@@ -4,14 +4,12 @@ interface ProductTranslations {
     description: string;
     composition: string;
     care: string;
-    origin: string;
   };
   pt: {
     name: string;
     description: string;
     composition: string;
     care: string;
-    origin: string;
   };
 }
 

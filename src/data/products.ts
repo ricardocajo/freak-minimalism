@@ -4,14 +4,12 @@ interface ProductTranslations {
     description: string;
     composition: string;
     care: string;
-    origin: string;
   };
   pt: {
     name: string;
     description: string;
     composition: string;
     care: string;
-    origin: string;
   };
 }
 
@@ -35,15 +33,13 @@ export const products: Product[] = [
         name: "Can I Lick T-Shirt",
         description: "A classic freak-minimalism t-shirt, do you Lick?",
         composition: "100% pre-shrunk cotton | 184g",
-        care: "It is recommended to iron the shirt inside out to preserve the embroidery.",
-        origin: "-",
+        care: "It is recommended to iron the shirt inside out to preserve the embroidery."
       },
       pt: {
         name: "Camiseta Minimal Logo",
         description: "Uma t-shirt clássica freak-minimalism, do you Lick?",
         composition: "100% algodão pré-encolhido | 184g",
-        care: "Recomenda-se passar a blusa do avesso para preservar o bordado",
-        origin: "-",
+        care: "Recomenda-se passar a blusa do avesso para preservar o bordado"
       }
     },
     price: 30.00,
