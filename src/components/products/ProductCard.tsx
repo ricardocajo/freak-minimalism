@@ -1,25 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import { Product } from "@/types/product";
+import { Product, CartItem } from "@/types/types";
+import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
+  onAddToCart: (item: CartItem) => void;
 }
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+  const { i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'pt';
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
   const handleAddToCart = () => {
-    onAddToCart({
-      ...product,
-      selectedColor,
-      selectedSize,
+    const cartItem: CartItem = {
+      _id: product._id,
+      name: product.translations[language].name,
+      price: product.price,
+      discountPrice: product.discountPrice || undefined,
+      color: selectedColor,
+      size: selectedSize,
+      image: product.images[0],
       quantity: 1,
-    });
+      featured: product.featured,
+      new: product.new
+    };
+    onAddToCart(cartItem);
   };
 
   return (
@@ -33,8 +43,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         />
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">{product.description}</p>
+        <h3 className="text-lg font-semibold mb-2">{product.translations[language].name}</h3>
         <div className="flex gap-4 mb-4">
           <div className="flex flex-col">
             <span className="text-sm font-medium mb-1">Color</span>
@@ -66,12 +75,12 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-xl font-bold">${product.price.toFixed(2)}</span>
+          <span className="text-xl font-bold">{product.discountPrice ? `${product.discountPrice}€` : `${product.price}€`}</span>
           <button
             onClick={handleAddToCart}
             className="px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
           >
-            Add to Cart
+            {i18n.t('add_to_cart')}
           </button>
         </div>
       </div>

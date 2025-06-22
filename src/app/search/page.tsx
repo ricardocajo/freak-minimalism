@@ -1,10 +1,10 @@
 "use client";
 
-import { Products } from "@/components/products/Products";
-import { getAllProducts } from "../actions";
-import { Product } from '@/types/types';
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getAllProducts } from '../actions';
+import { Product } from '@/types/types';
 
 interface SearchProps {
   searchParams: { [key: string]: string | undefined };
@@ -17,7 +17,7 @@ const normalizeText = (text: string): string => {
     .toLowerCase();
 };
 
-const Search: React.FC<SearchProps> = async ({ searchParams }) => {
+const Search: React.FC<SearchProps> = ({ searchParams }) => {
   const products = getAllProducts();
   let filteredProducts: Product[] = [];
 
@@ -31,55 +31,58 @@ const Search: React.FC<SearchProps> = async ({ searchParams }) => {
           const normalizedPtName = normalizeText(product.translations.pt.name);
           
           // Check if search term matches either English or Portuguese name
-          return normalizedEnName.includes(normalizedSearch) || 
-                 normalizedPtName.includes(normalizedSearch);
+          return normalizedEnName.includes(normalizedSearch) || normalizedPtName.includes(normalizedSearch);
         });
       } else {
         filteredProducts = products;
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error filtering products:', error);
-      filteredProducts = [];
     }
   }
 
   const { t } = useTranslation('common');
 
   return (
-    <section className="">
-      {filteredProducts.length > 0 ? (
-        <Products products={filteredProducts} extraClassname="" />
-      ) : (
-        <div className="flex flex-col items-center justify-center gap-4">
-          <h3 className="text-sm text-center">
-            No products found for "{searchParams.q}"
-          </h3>
-          <div className="flex items-center justify-center p-4 bg-black rounded-full">
-            <div className="flex flex-col items-center text-center">
-              <Link
-                href="/customize"
-                className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-gradient-to-r from-[#00B4DB] to-[#0083B0] text-white rounded-full hover:from-[#00A1CE] hover:to-[#007195] transition-all"
-              >
-                {t('products.customizeButton')}
-                <svg
-                  className="w-2.5 h-2.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+    <div className="container mx-auto py-12">
+      <h1 className="text-3xl font-bold mb-8">Search Results</h1>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <div key={product._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+              <Link href={`/products/${product._id}`} className="block">
+                <div className="relative h-64">
+                  <Image
+                    src={product.images[0]}
+                    alt={product.translations.en.name}
+                    fill
+                    className="object-cover"
                   />
-                </svg>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold mb-2">{product.translations.en.name}</h3>
+                  <span className="text-sm">
+                    {product.discountPrice ? `${product.discountPrice}€` : `${product.price}€`}
+                  </span>
+                </div>
               </Link>
             </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center">
+            <h3 className="text-sm text-center mb-4">
+              {t('search.noResults', { query: searchParams.q })}
+            </h3>
+            <Link
+              href="/"
+              className="text-sm font-medium text-primary hover:underline"
+            >
+              {t('search.backToHome')}
+            </Link>
           </div>
-        </div>
-      )}
-    </section>
+        )}
+      </div>
+    </div>
   );
 };
 

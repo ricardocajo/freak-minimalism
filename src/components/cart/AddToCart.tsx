@@ -30,8 +30,8 @@ export const AddToCart = ({
     }
 
     const cartItem: CartItem = {
-      id: product.id,
-      name: product.name,
+      _id: product._id,
+      name: product.translations[i18n.language as 'en' | 'pt'].name,
       price: product.price,
       discountPrice: product.discountPrice,
       color: selectedColor,
@@ -44,7 +44,7 @@ export const AddToCart = ({
       addToCart(cartItem);
       toast.success(t('cart.added_to_cart'));
     });
-  }, [product, selectedColor, selectedSize, addToCart]);
+  }, [product, selectedColor, selectedSize, addToCart, t]);
 
   return (
     <div className="flex flex-col gap-4">

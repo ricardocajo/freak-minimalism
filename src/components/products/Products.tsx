@@ -67,8 +67,12 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
       )}
       <div className={gridClassname + " " + extraClassname}>
         {filteredProducts.map((product: Product) => (
-          <div key={product.id} className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-col">
-            <Link href={`/products/${product.id}`} className="hover:scale-105 transition-all">
+          <div key={product._id} className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-col">
+            <Link
+              key={product._id}
+              href={`/products/${product._id}`}
+              className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all hover:scale-[1.02]"
+            >
               <div className="relative">
                 <Images
                   src={product.images[0]}
@@ -79,7 +83,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
             </Link>
             <div className="flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
               <div className="flex justify-between w-full">
-                <Link href={`/products/${product.id}`} className="w-10/12">
+                <Link href={`/products/${product._id}`} className="w-10/12">
                   <h2 className="text-sm font-semibold truncate">{product.translations[language].name}</h2>
                 </Link>
                 {product.discountPrice && (
@@ -94,7 +98,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
                   <span className="text-sm font-semibold">{product.discountPrice}€</span>
                 </div>
               ) : (
-                <div className="text-sm">{product.price}€</div>
+                <span className="text-sm">{product.price}€</span>
               )}
             </div>
           </div>

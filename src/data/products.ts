@@ -15,6 +15,7 @@ interface ProductTranslations {
 
 interface Product {
   _id: string;
+  name: string;
   translations: ProductTranslations;
   price: number;
   categories: string[];
@@ -22,12 +23,15 @@ interface Product {
   colors: string[];
   sizes: string[];
   discountPrice?: number;
+  featured?: boolean;
+  new?: boolean;
 }
 
 export const products: Product[] = [
   // T-Shirts
   {
     _id: "canilick",
+    name: "Can I Lick T-Shirt",
     translations: {
       en: {
         name: "Can I Lick T-Shirt",
@@ -48,7 +52,7 @@ export const products: Product[] = [
       "/images/tshirts/canilick1.png",
       "/images/tshirts/canilick2.png"
     ],
-    colors: ["Black", "White"],
+    colors: ["white", "black"],
     sizes: ["S", "M", "L", "XL"],
     discountPrice: 27.75
   },
@@ -56,20 +60,19 @@ export const products: Product[] = [
   // Pants
   {
     _id: "demonslayer",
+    name: "Demon Slayer Nezuko T-Shirt",
     translations: {
       en: {
         name: "Demon Slayer Nezuko T-Shirt",
         description: "For Demon Slayer fans - Nezuko style",
         composition: "65% cotton, 35% polyester",
-        care: "Machine wash cold. Do not bleach. Iron low heat.",
-        origin: "Made in Portugal",
+        care: "Machine wash cold. Do not bleach. Iron low heat."
       },
       pt: {
         name: "Demon Slayer Nezuko T-Shirt",
         description: "Para fãs de Demon Slayer - Estilo Nezuko",
         composition: "65% algodão, 35% poliéster",
-        care: "Lavar na máquina em água fria. Não alvejar. Passar a ferro em baixa temperatura.",
-        origin: "Feito em Portugal",
+        care: "Lavar na máquina em água fria. Não alvejar. Passar a ferro em baixa temperatura."
       }
     },
     price: 65.00,
@@ -86,20 +89,19 @@ export const products: Product[] = [
   // Sweatshirts
   {
     _id: "naruto",
+    name: "Naruto Team 7 T-Shirt",
     translations: {
       en: {
         name: "Naruto Team 7 T-Shirt",
         description: "A Naruto Sasuke Sakura Kakashi T-Shirt",
         composition: "80% cotton, 20% polyester",
-        care: "Machine wash cold. Do not bleach. Tumble dry low.",
-        origin: "Made in Portugal",
+        care: "Machine wash cold. Do not bleach. Tumble dry low."
       },
       pt: {
         name: "Naruto Equipa 7 T-Shirt",
         description: "T-Shirt de Naruto Sasuke Sakura e Kakashi",
         composition: "80% algodão, 20% poliéster",
-        care: "Lavar na máquina em água fria. Não alvejar. Secar em baixa temperatura.",
-        origin: "Feito em Portugal",
+        care: "Lavar na máquina em água fria. Não alvejar. Secar em baixa temperatura."
       }
     },
     price: 48.00,

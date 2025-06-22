@@ -42,28 +42,26 @@ export default function CartPage() {
         ) : (
           cart.map((item: CartItem) => (
             <div
-              key={item.id}
+              key={item._id}
               className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-row sm:flex-col"
             >
               <Link
-                href={`/products/${item.id}`}
+                href={`/products/${item._id}`}
                 className="w-6/12 sm:w-full hover:scale-105 transition-all"
               >
                 <div className="relative w-full h-32 sm:h-48">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover brightness-90"
-                    width={280}
-                    height={425}
-                    decoding="async"
-                    data-nimg="1"
+                    className="object-cover brightness-90"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
               </Link>
               <div className="w-6/12 sm:w-full flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
                 <div className="flex justify-between w-full">
-                  <Link href={`/products/${item.id}`} className="w-10/12">
+                  <Link href={`/products/${item._id}`} className="w-10/12">
                     <h2 className="text-sm font-semibold truncate">{item.name}</h2>
                   </Link>
                   <button
@@ -108,7 +106,7 @@ export default function CartPage() {
                 <div className="flex items-center justify-between sm:hidden">
                   <div className="flex bg-black w-min">
                     <button
-                      onClick={() => decrementQuantity(item.id)}
+                      onClick={() => decrementQuantity(item._id)}
                       className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-l text-[#A1A1A1] transition-all hover:text-white border-border-primary"
                     >
                       -
@@ -128,7 +126,7 @@ export default function CartPage() {
                 <div className="items-center justify-between hidden sm:flex">
                   <div className="flex bg-black w-min">
                     <button
-                      onClick={() => decrementQuantity(item.id)}
+                      onClick={() => decrementQuantity(item._id)}
                       className="flex items-center justify-center w-8 h-8 p-2 border border-solid rounded-l text-[#A1A1A1] transition-all hover:text-white border-border-primary"
                     >
                       -

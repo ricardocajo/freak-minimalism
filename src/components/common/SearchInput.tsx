@@ -13,7 +13,7 @@ const SearchInput = () => {
     } else {
       router.replace("/search");
     }
-  }, []);
+  }, [router]);
 
   return (
       <div className="flex w-full border border-[#2E2E2E] rounded-md overflow-hidden">

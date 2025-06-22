@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { Product } from "@/types/types";
 
 export interface CartItem {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   discountPrice?: number;
@@ -52,7 +52,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = (item: CartItem) => {
     const existingItem = cart.find((cartItem) => 
-      cartItem.id === item.id && 
+      cartItem._id === item._id && 
       cartItem.color === item.color && 
       cartItem.size === item.size
     );
@@ -60,7 +60,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     if (existingItem) {
       setCart((prev) =>
         prev.map((cartItem) =>
-          cartItem.id === item.id && 
+          cartItem._id === item._id && 
           cartItem.color === item.color && 
           cartItem.size === item.size
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -74,18 +74,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const removeFromCart = (item: CartItem) => {
     setCart((prev) => prev.filter((cartItem) => 
-      !(cartItem.id === item.id && 
+      !(cartItem._id === item._id && 
         cartItem.color === item.color && 
         cartItem.size === item.size)
     ));
   };
 
   const decrementQuantity = (itemId: string) => {
-    const item = cart.find((cartItem) => cartItem.id === itemId);
+    const item = cart.find((cartItem) => cartItem._id === itemId);
     if (item && item.quantity > 1) {
       setCart((prev) =>
         prev.map((cartItem) =>
-          cartItem.id === itemId
+          cartItem._id === itemId
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         )
