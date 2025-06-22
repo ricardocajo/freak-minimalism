@@ -13,10 +13,7 @@ export async function POST(request: Request) {
     const lineItems = cartItems.map((item: CartItem) => ({
       price: item._id, // Using _id as the Stripe price ID
       quantity: item.quantity,
-      metadata: {
-        size: item.size,
-        color: item.color
-      }
+      description: `${item.size} - ${item.color}`
     }));
 
     const session = await stripe.checkout.sessions.create({
