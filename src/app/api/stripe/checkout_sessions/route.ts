@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       shipping_address_collection: {
       allowed_countries: ['PT'],
       },
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/cart`,
       metadata: {
         userId: 'user_123', // Replace with actual user ID if you have authentication
