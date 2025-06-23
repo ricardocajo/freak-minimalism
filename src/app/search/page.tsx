@@ -109,13 +109,13 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
             ) : (
               <div className="col-span-full text-center">
                 <h3 className="text-sm text-center mb-4">
-                  {t('search.noResults', { query: searchParams.q })}
+                  No results found for "{searchParams.q || ''}"
                 </h3>
                 <Link
                   href="/"
                   className="text-sm font-medium text-primary hover:underline"
                 >
-                  {t('search.backToHome')}
+                  Back to Home
                 </Link>
               </div>
             )}
