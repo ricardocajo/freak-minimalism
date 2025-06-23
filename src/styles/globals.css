@@ -45,14 +45,33 @@ body {
 }
 
 body {
-  color: #ededed;
+  color: #b5a1e2;
+  text-shadow: 
+    0 0 10px rgba(181, 161, 226, 0.5),
+    0 0 20px rgba(181, 161, 226, 0.4),
+    0 0 30px rgba(181, 161, 226, 0.3);
   font-family: 'Quicksand', system-ui, sans-serif;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+
+/* Keep navbar and footer text white */
+.navbar,
+.footer {
+  color: #ffffff !important;
+}
+
+/* Remove duplicate background gradient */
+/* Fix for the background gradient */
+body {
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-start-rgb)),
+    rgba(var(--background-end-rgb))
+  );
 }
 
 a {
