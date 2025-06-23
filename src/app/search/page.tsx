@@ -52,7 +52,7 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
 
   return (
     <section>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6 mt-4">
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center text-center">
             <span className="text-sm text-[#A1A1A1]">◐ 𝔇𝔦𝔣𝔣𝔢𝔯𝔢𝔫𝔱 𝔳𝔦𝔰𝔦𝔬𝔫, 𝔡𝔦𝔣𝔣𝔢𝔫𝔱 𝔰𝔱𝔶𝔩𝔢 ◑</span>
@@ -64,62 +64,63 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
             </Link>
           </div>
         </div>
-      </div>
-      <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 sm:grid-cols-auto-fill-250">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div key={product._id} className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-col">
-              <Link href={`/products/${product._id}`} className="block">
-                <a className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all hover:scale-[1.02]" href={`/products/${product._id}`}>
-                  <div className="relative">
-                    <div className="relative w-full max-w-img aspect-[2/3] brightness-90">
-                      <Image
-                        src={product.images[0]}
-                        alt={product.translations.en.name}
-                        fill
-                        className="object-cover"
-                      />
+        <div className="container mx-auto">
+          <h1 className="text-3xl font-bold mb-8">Search Results</h1>
+          <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 sm:grid-cols-auto-fill-250">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <div key={product._id} className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-col">
+                  <Link href={`/products/${product._id}`} className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all hover:scale-[1.02]">
+                    <div className="relative">
+                      <div className="relative w-full max-w-img aspect-[2/3] brightness-90">
+                        <Image
+                          src={product.images[0]}
+                          alt={product.translations.en.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                  <div className="flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
+                    <div className="flex justify-between w-full">
+                      <Link href={`/products/${product._id}`} className="w-10/12">
+                        <h2 className="text-sm font-semibold truncate">{product.translations.en.name}</h2>
+                      </Link>
+                      {product.discountPrice && (
+                        <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
+                          {(((product.price - product.discountPrice) / product.price) * 100).toFixed(0)}% OFF
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {product.discountPrice ? (
+                        <>
+                          <span className="text-sm line-through text-[#A1A1A1]">{product.price}€</span>
+                          <span className="text-sm font-semibold">{product.discountPrice}€</span>
+                        </>
+                      ) : (
+                        <span className="text-sm">{product.price}€</span>
+                      )}
                     </div>
                   </div>
-                </a>
-                <div className="flex justify-between flex-col gap-2.5 p-3.5 bg-background-secondary z-10">
-                  <div className="flex justify-between w-full">
-                    <a className="w-10/12" href={`/products/${product._id}`}>
-                      <h2 className="text-sm font-semibold truncate">{product.translations.en.name}</h2>
-                    </a>
-                    {product.discountPrice && (
-                      <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
-                        {(((product.price - product.discountPrice) / product.price) * 100).toFixed(0)}% OFF
-                      </span>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    {product.discountPrice ? (
-                      <>
-                        <span className="text-sm line-through text-[#A1A1A1]">{product.price}€</span>
-                        <span className="text-sm font-semibold">{product.discountPrice}€</span>
-                      </>
-                    ) : (
-                      <span className="text-sm">{product.price}€</span>
-                    )}
-                  </div>
                 </div>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <div className="col-span-full text-center">
-            <h3 className="text-sm text-center mb-4">
-              {t('search.noResults', { query: searchParams.q })}
-            </h3>
-            <Link
-              href="/"
-              className="text-sm font-medium text-primary hover:underline"
-            >
-              {t('search.backToHome')}
-            </Link>
+              ))
+            ) : (
+              <div className="col-span-full text-center">
+                <h3 className="text-sm text-center mb-4">
+                  {t('search.noResults', { query: searchParams.q })}
+                </h3>
+                <Link
+                  href="/"
+                  className="text-sm font-medium text-primary hover:underline"
+                >
+                  {t('search.backToHome')}
+                </Link>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

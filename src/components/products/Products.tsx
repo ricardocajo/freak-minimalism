@@ -38,7 +38,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
     : products;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-6 mt-4">
       {showCustomization && (
         <div className="flex items-center justify-center">
           <div className="flex flex-col items-center text-center">
