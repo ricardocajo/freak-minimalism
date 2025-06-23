@@ -15,7 +15,6 @@ interface ProductTranslations {
 
 export interface Product {
   _id: string;
-  name: string;
   translations: ProductTranslations;
   price: number;
   discountPrice?: number;
@@ -23,8 +22,6 @@ export interface Product {
   colors: string[];
   sizes: string[];
   categories: string[];
-  featured?: boolean;
-  new?: boolean;
 }
 
 export type ProductDocument = Product;
@@ -38,7 +35,5 @@ export interface CartItem {
   size: string;
   image: string;
   quantity: number;
-  featured?: boolean;
-  new?: boolean;
-  stripePriceId: string;
+  stripePriceId?: string;
 }

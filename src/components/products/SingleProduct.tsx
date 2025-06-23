@@ -18,11 +18,10 @@ interface SingleProductProps {
 }
 
 export const SingleProduct = ({ product }: SingleProductProps) => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const language = i18n.language as 'en' | 'pt';
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const productName = product.translations[language].name;
 
   return (
     <div className="flex flex-col gap-10">
@@ -33,7 +32,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
         <div className="sticky flex flex-col items-center justify-center w-full h-full gap-5 grow basis-600 top-8">
           <div className="w-full border border-solid rounded border-border-primary bg-background-secondary">
             <div className="flex flex-col justify-between gap-3 p-5 border-b border-solid border-border-primary">
-              <h1 className="text-3xl font-bold mb-4">{productName}</h1>
+              <h1 className="text-3xl font-bold mb-4">{product.translations[language].name}</h1>
               <p className="text-gray-500 mb-6">{product.translations[language].description}</p>
               {product.discountPrice && (
                 <span className="flex items-center justify-center px-2 py-1 text-xs font-semibold text-white bg-[#E53E3E] rounded-full">
@@ -95,7 +94,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
             <Accordion type="single" defaultValue="composition" collapsible>
               <AccordionItem value="composition" className="border-b border-[#2E2E2E]">
                 <AccordionTrigger className="flex flex-1 items-center justify-between py-4 font-medium transition-all [&[data-state=open]>.lucide-chevron-down]:rotate-180 text-sm">
-                  {t('productDetails.composition')}
+                  Composition
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
@@ -104,7 +103,7 @@ export const SingleProduct = ({ product }: SingleProductProps) => {
               </AccordionItem>
               <AccordionItem value="care" className="border-b border-[#2E2E2E]">
                 <AccordionTrigger className="flex flex-1 items-center justify-between py-4 font-medium transition-all [&[data-state=open]>.lucide-chevron-down]:rotate-180 text-sm">
-                  {t('productDetails.care')}
+                  Care
                   <ChevronDown className="w-4 h-4 transition-transform duration-200 shrink-0" />
                 </AccordionTrigger>
                 <AccordionContent className="overflow-hidden text-[#A1A1A1] text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">

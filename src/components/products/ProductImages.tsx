@@ -7,17 +7,16 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Images } from "./Images";
-
-interface Product {
-  images: string[];
-  name: string;
-}
+import { Product } from "@/types/types";
+import { useTranslation } from "react-i18next";
 
 interface ProductImagesProps {
   product: Product;
 }
 
 export const ProductImages = ({ product }: ProductImagesProps) => {
+  const { i18n } = useTranslation();
+  const language = i18n.language as 'en' | 'pt';
   if (!product.images || product.images.length === 0) {
     return (
       <div className="flex flex-wrap justify-between gap-8">
@@ -34,7 +33,7 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
                     <div className="relative">
                       <Images
                         src={product.images[0]}
-                        alt={product.name}
+                        alt={product.translations[language].name}
                         className="w-full h-full object-cover"
                         width={250}
                         height={375}
@@ -65,7 +64,7 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
                   <div className="relative">
                     <Images
                       src={product.images[0]}
-                      alt={product.name}
+                      alt={product.translations[language].name}
                       className="w-full h-full object-cover"
                       width={250}
                       height={375}
@@ -83,7 +82,7 @@ export const ProductImages = ({ product }: ProductImagesProps) => {
             <div className="relative">
               <Images
                 src={image}
-                alt={product.name}
+                alt={product.translations[language].name}
                 className="w-full h-full object-cover"
                 width={850}
                 height={1275}

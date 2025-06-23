@@ -5,6 +5,7 @@ import { Product, CartItem } from "@/types/types";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
+
 interface ProductCardProps {
   product: Product;
   onAddToCart: (item: CartItem) => void;
@@ -26,8 +27,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
       size: selectedSize,
       image: product.images[0],
       quantity: 1,
-      featured: product.featured,
-      new: product.new
+      stripePriceId: product._id // Using product ID as stripePriceId for now
     };
     onAddToCart(cartItem);
   };
@@ -37,7 +37,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
       <div className="relative h-64">
         <Image
           src={product.images[0]}
-          alt={product.name}
+          alt={product.translations[language].name}
           fill
           className="object-cover"
         />
@@ -50,7 +50,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             <select
               value={selectedColor}
               onChange={(e) => setSelectedColor(e.target.value)}
-              className="rounded-md border-gray-300 dark:border-gray-700"
+              className="w-full p-2 border rounded"
             >
               {product.colors.map((color) => (
                 <option key={color} value={color}>
@@ -64,7 +64,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              className="rounded-md border-gray-300 dark:border-gray-700"
+              className="w-full p-2 border rounded"
             >
               {product.sizes.map((size) => (
                 <option key={size} value={size}>

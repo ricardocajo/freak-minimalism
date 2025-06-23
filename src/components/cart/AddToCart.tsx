@@ -3,8 +3,7 @@
 import React from "react";
 import { useTransition, useCallback } from "react";
 import { useCart } from "@/contexts/CartContext";
-import { CartItem } from "@/contexts/CartContext";
-import { Product } from "@/types/types";
+import { Product, CartItem } from "@/types/types";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 
@@ -38,6 +37,7 @@ export const AddToCart = ({
       size: selectedSize,
       image: product.images[0],
       quantity: 1,
+      stripePriceId: product._id // Using product ID as stripePriceId for now
     };
 
     startTransition(() => {

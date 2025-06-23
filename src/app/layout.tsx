@@ -4,13 +4,27 @@ import '@/styles/globals.css';
 import "@/styles/globals.css";
 import { I18nProvider } from "@/components/common/I18nProvider";
 import { CartProvider } from "@/contexts/CartContext";
-import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
-import { Toaster } from "sonner";
+import { Navbar } from "@/components/common/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Providers from "./Providers";
 import { I18nInitializer } from "@/components/common/I18nInitializer";
+import { Toaster } from "sonner";
+
+// Client components wrapper
+const ClientComponents = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Toaster position="top-right" />
+      <Analytics />
+      <SpeedInsights />
+      <Footer />
+    </>
+  );
+};
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -35,14 +49,11 @@ export default function RootLayout({
         <I18nProvider>
           <CartProvider>
             <Providers>
-              <Navbar />
-              <main className="pointer-events-auto">
-                {children}
-                <Toaster position="top-right" />
-                <Analytics />
-                <SpeedInsights />
-              </main>
-              <Footer />
+              <ClientComponents>
+                <main className="pointer-events-auto">
+                  {children}
+                </main>
+              </ClientComponents>
             </Providers>
           </CartProvider>
         </I18nProvider>
