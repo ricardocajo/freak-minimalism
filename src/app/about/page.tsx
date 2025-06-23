@@ -20,8 +20,9 @@ export default function AboutPage() {
             </p>
           ))}
         </div>
-        <div className="flex items-center justify-center p-4 bg-black rounded-full mt-12">
+        <div className="flex items-center justify-center mt-8">
           <div className="flex flex-col items-center text-center">
+            <span className="text-sm text-[#A1A1A1]">{t('products.customizeMessage')}</span>
             <Link
               href="/customize"
               className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-gradient-to-r from-[#00B4DB] to-[#0083B0] text-white rounded-full hover:from-[#00A1CE] hover:to-[#007195] transition-all"
