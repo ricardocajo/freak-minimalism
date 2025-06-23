@@ -3,8 +3,8 @@
 import { useTranslation } from 'react-i18next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllProducts } from '../actions';
 import { Product } from '@/types/types';
+import { products } from '@/data/products';
 
 interface SearchProps {
   searchParams: { [key: string]: string | undefined };
@@ -19,14 +19,14 @@ const normalizeText = (text: string): string => {
 };
 
 const Search: React.FC<SearchProps> = ({ searchParams }) => {
-  const products = getAllProducts();
+  const productsData = products;
   let filteredProducts: Product[] = [];
 
-  if (products) {
+  if (productsData) {
     try {
       if (searchParams.q) {
         const searchTerm = searchParams.q as string;
-        filteredProducts = products.filter((product) => {
+        filteredProducts = productsData.filter((product) => {
           const normalizedSearch = normalizeText(searchTerm).trim();
           const normalizedEnName = normalizeText(product.translations.en.name);
           const normalizedPtName = normalizeText(product.translations.pt.name);
@@ -41,7 +41,7 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
           );
         });
       } else {
-        filteredProducts = products;
+        filteredProducts = productsData;
       }
     } catch (error) {
       console.error('Error filtering products:', error);
