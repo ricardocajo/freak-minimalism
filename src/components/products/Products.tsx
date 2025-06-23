@@ -40,7 +40,7 @@ export const Products = ({ products, extraClassname = "" }: ProductsProps) => {
   return (
     <div className="flex flex-col gap-4">
       {showCustomization && (
-        <div className="flex items-center justify-center p-4 bg-black rounded-full">
+        <div className="flex items-center justify-center">
           <div className="flex flex-col items-center text-center">
             <span className="text-sm text-[#A1A1A1]">{t('products.customizeMessage')}</span>
             <Link

@@ -9,7 +9,7 @@ export default function ProductsPage() {
   const { addToCart } = useCart();
 
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto py-1">
       <h1 className="text-3xl font-bold mb-8">Shop</h1>
       
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

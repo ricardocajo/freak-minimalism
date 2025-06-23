@@ -11,9 +11,10 @@ interface SearchProps {
 }
 
 const normalizeText = (text: string): string => {
+  if (!text) return '';
   return text
-    .replace(/[-_]/g, "")
-    .replace(/[^\w\s]/g, "")
+    .normalize('NFD')
+    .replace(/[^\w\s]/g, '')
     .toLowerCase();
 };
 
@@ -26,12 +27,18 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
       if (searchParams.q) {
         const searchTerm = searchParams.q as string;
         filteredProducts = products.filter((product) => {
-          const normalizedSearch = normalizeText(searchTerm);
+          const normalizedSearch = normalizeText(searchTerm).trim();
           const normalizedEnName = normalizeText(product.translations.en.name);
           const normalizedPtName = normalizeText(product.translations.pt.name);
           
           // Check if search term matches either English or Portuguese name
-          return normalizedEnName.includes(normalizedSearch) || normalizedPtName.includes(normalizedSearch);
+          // Also check if the search term is a substring of the product name
+          return (
+            normalizedEnName.includes(normalizedSearch) || 
+            normalizedPtName.includes(normalizedSearch) ||
+            normalizedSearch.includes(normalizedEnName) ||
+            normalizedSearch.includes(normalizedPtName)
+          );
         });
       } else {
         filteredProducts = products;
@@ -44,12 +51,24 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
   const { t } = useTranslation('common');
 
   return (
-    <div className="container mx-auto py-12">
-      <h1 className="text-3xl font-bold mb-8">Search Results</h1>
+    <section>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center justify-center">
+          <div className="flex flex-col items-center text-center">
+            <span className="text-sm text-[#A1A1A1]">◐ 𝔇𝔦𝔣𝔣𝔢𝔯𝔢𝔫𝔱 𝔳𝔦𝔰𝔦𝔬𝔫, 𝔡𝔦𝔣𝔣𝔢𝔫𝔱 𝔰𝔱𝔶𝔩𝔢 ◑</span>
+            <Link href="/customize" className="inline-flex items-center gap-1 px-3 py-1.5 text-sm font-medium bg-gradient-to-r from-[#00B4DB] to-[#0083B0] text-white rounded-full hover:from-[#00A1CE] hover:to-[#007195] transition-all">
+              Envia-nos a tua ideia
+              <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </div>
       <div className="grid gap-x-3.5 gap-y-6 sm:gap-y-9 sm:grid-cols-auto-fill-250">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div key={product._id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            <div key={product._id} className="flex justify-between border border-solid border-border-primary rounded-md overflow-hidden flex-col">
               <Link href={`/products/${product._id}`} className="block">
                 <a className="flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all hover:scale-[1.02]" href={`/products/${product._id}`}>
                   <div className="relative">
@@ -102,7 +121,7 @@ const Search: React.FC<SearchProps> = ({ searchParams }) => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
